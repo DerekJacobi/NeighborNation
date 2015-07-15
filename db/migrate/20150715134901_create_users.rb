@@ -10,6 +10,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.integer :zip
+      t.string :aboutme
+      t.string :recommandations
 
       t.timestamps null: false
     end
