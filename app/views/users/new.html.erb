@@ -5,7 +5,7 @@
 <form action="<%= users_path %>" method="post">
   <input type="hidden"
          name="authenticity_token"
-         value="<%= form_authenticity_token %>"
+         value="<%= form_authenticity_token %>">
   <input type="email"
          name="user[email]"
          placeholder="email">
@@ -42,5 +42,5 @@
            name="user[zip]"
            placeholder="zip">
   </div>
-  <input type="submit" value="SignUp!"
+  <input type="submit" value="SignUp!">
 </form>

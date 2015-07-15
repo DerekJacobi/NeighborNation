@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :email, presence: true
-  validates :, presence: true
+  validates :password, length: {minimum: 6}, allow_nil: true
+  validates :password_digest, presence: true
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :street, presence: true
@@ -28,6 +29,6 @@ class User < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true
   validates :zip, presence: true
-  
+
 
 end
