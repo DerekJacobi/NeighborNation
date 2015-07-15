@@ -1,24 +1,40 @@
 <div class="app-window">
 
-  <ul class="tabs-group">
-    <!-- Change 'my profile' to a dynamic variable so it can switch between 'my profile' and [name] profile -->
-    <li><a href="#box-profile">My Profile</a></li>
-    <li><a href="#box-neighbors">My Neighbors</a></li>
-    <li><a href="#box-settings">Settings</a></li>
-  </ul>
+  <div class="tab-window">
 
-  <div class="box-wrap">
-    <div id="box-profile">
-      My profile info here.
+    <div class="left-column">
+      <!-- 'Profile' should be a dynamic variable to inserts other names -->
+      <a href="#tab-profile">Profile</a>
+      <a href="#tab-neighbors">My Neighbors</a>
+      <a href="#tab-settigs">Settings</a>
     </div>
 
-    <div id="box-neighbors">
-      My neighbors here.
+    <div class="tab-content">
+      <div class="default" id="tab-profile">
+        <div><div class="user-show-div">
+  <h2>MY PROFILE</h2>
+    <div class="userphoto">
+      USER PHOTO
+    </div>
+    <h1><%= @user.firstname %> <%= @user.lastname %>, Apt: <%= @user.aptnumber %></h1>
+      </br>
+        <p>ABOUT ME:</p>
+        <p><%= best_in_place @user, :aboutme %></p>
+        <p>MY LOCAL RECOMMENDATIONS: </p>
+        <p><%= best_in_place @user, :recommandations %></p>
+      </div>
+      </div>
+      </div>
+
+      <div id="tab-neighbors">
+        <div>My neighbors here.</div>
+      </div>
+
+      <div id="tab-settigs">
+        <div>My settings here.</div>
+      </div>
     </div>
 
-    <div id="box-settings">
-      My settings here.
-    </div>
   </div>
 
 </div>
