@@ -7,6 +7,12 @@
     <input type="hidden"
            name="authenticity_token"
            value="<%= form_authenticity_token %>">
+    <input type="hidden"
+            name="user[aboutme]"
+            value="Click Here to Edit About Me">
+    <input type="hidden"
+           name="user[recommandations]"
+           value="Click Here to Edit Recommendations ">
     <input type="email"
            name="user[email]"
            placeholder="email">
@@ -22,7 +28,6 @@
     <input type="text"
            name="user[lastname]"
            placeholder="last name">
-
     <div class="street">
       <input class="streetbig" type="text"
              name="user[street]"

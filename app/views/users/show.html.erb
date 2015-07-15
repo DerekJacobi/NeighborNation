@@ -18,7 +18,9 @@
     </div>
     <h1><%= @user.firstname %> <%= @user.lastname %>, Apt: <%= @user.aptnumber %></h1>
       </br>
+      <div class="info">
         <p>ABOUT ME:</p>
+      </div>
         <p><%= best_in_place @user, :aboutme %></p>
         <p>MY LOCAL RECOMMENDATIONS: </p>
         <p><%= best_in_place @user, :recommandations %></p>
