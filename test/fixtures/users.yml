@@ -12,6 +12,8 @@
 #  city            :string
 #  state           :string
 #  zip             :integer
+#  aboutme         :string
+#  recommandations :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
