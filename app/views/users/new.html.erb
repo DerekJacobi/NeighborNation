@@ -1,14 +1,11 @@
 <div class="signup-login">
-  <button>SignUp</button> <button>Login</button>
+  <button>SignUp</button> <button><a href="<%= new_session_path %>">Login</a></button>
 </div>
 
-<form action="<%= session_path %>" method="post">
+<form action="<%= users_path %>" method="post">
   <input type="hidden"
          name="authenticity_token"
          value="<%= form_authenticity_token %>"
-  <input type="text"
-         name="user[username]"
-         placeholder="User Name">
   <input type="email"
          name="user[email]"
          placeholder="email">
