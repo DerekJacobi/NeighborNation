@@ -26,13 +26,14 @@ html {
 
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   font-family: monospace;
   padding-top: 10%;
-  width: 480px;
-  margin: 0 auto;
-
-  background: #B5FFE1;
+  // background: #B5FFE1;
 }
 
 form {
@@ -64,6 +65,17 @@ form {
   }
 }
 
+.app-window {
+  height: 500px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.login-container {
+  width: 40%;
+  margin: 0 auto;
+}
+
 .signup-login{
   display: flex;
   justify-content: center;
@@ -72,9 +84,11 @@ form {
   button {
     flex-grow: 1;
     background: #4E878C;
+    
     &:hover {
       background: #65B891;
     }
+
     a {
       text-decoration: none;
     }
