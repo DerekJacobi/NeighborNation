@@ -40,8 +40,9 @@ body {
 }
 
 header {
-  height: 150px;
-  width: 100%;
+  height: 120px;
+  width: calc(100% - 200px);
+  margin-left: 200px;
   font-family: 'Raleway' sans-serif;
 }
 
@@ -121,8 +122,8 @@ form {
 
 .login-container {
   width: 450px;
-  margin: 0 auto;
-  margin-left: 0;
+  // margin: 0 auto;
+  // margin-left: 20%;
 }
 
 .signup-login{
@@ -211,13 +212,16 @@ form {
 
 #left-column {
   display: inline-block;
-  width: 100%;
-  height: calc(100vh - 150px);
+  position: fixed;
+  width: 200px;
+  height: 100vh;
   min-height: 350px;
+  // padding-left: 50px;
 
   div.nav-icon-container {
     height: 25%;
     width: 100%;
+    padding-top: 30%;
     text-align: center;
 
     &:first-child {
@@ -225,6 +229,7 @@ form {
 
       i {
         color: #F25F5C;
+        // border-radius: 1.25em;
       }
     }
 
@@ -249,15 +254,32 @@ form {
       }
     }
   }
-}
 
-#main-column {
-  width: 200px;
-}
+  i {
+    transition: all 0.5s ease;
+    padding: .35em;
+    border-radius: .5em;
+  }
 
+  i:hover {
+    cursor: pointer;
+    // opacity: .75;
+    color: white !important;
+    background-color: darkgray;
+
+    + div {
+      color: darkgray;
+    }
+  }
+}
 
 #main-page {
+  width: calc(100% - 200px);
+  height: calc(100vh - 200px);
   display: flex;
+  justify-content: center;
+  // float: left;
+  margin-left: 200px;
 }
 
 .userlist {
