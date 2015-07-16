@@ -80,6 +80,5 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['DATABASE_URL_NN'] %>
-  username: <%= ENV['NN_HEROKU_USER'] %>
-  password: <%= ENV['NEIGHBOR_NATION_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL']  %>
+  database: Neighbor_Nation_production
