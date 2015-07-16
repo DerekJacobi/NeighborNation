@@ -32,24 +32,32 @@
 
         <div class="content">
           <div>
+            <ul class="collapsible" data-collapsible="accordion">
 
-          <ul class="collapsible" data-collapsible="accordion">
-  <li>
-    <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-  </li>
-  <li>
-    <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-  </li>
-  <li>
-    <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-  </li>
-</ul>
+            <% @all_users.each do |user| %>
+            <li>
+              <div class="collapsible-header"><p><%= user.firstname %><%= user.lastname %></p></div>
+              <div class="collapsible-body"><p><%= user.aboutme %></p></div>
+            <% end %>
+            </li>
+            </ul>
+
+
+
+
+<!--
+            <li>
+              <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li> -->
+
         </div>
       </div>
-
+</div>
       <div class="tab">
         <input class="hidden-radio" type="radio" name="tab-group-1" id="tab-3">
         <label for="tab-3">Settings</label>
