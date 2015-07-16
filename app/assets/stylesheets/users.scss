@@ -7,68 +7,76 @@
   position: relative;
   width: 100%;
   float: left;
-  font-family: "Avenir" sans-serif;
+  font-family: "Oxygen" sans-serif;
+  font-weight: 300;
+  // border: 1px solid #f47e7c;
 
-  .left-column {
-    height: 100%;
-    width: 25%;
-    float: left;
-
-    a {
-      width: 100%;
-      height: calc(100% / 3);
-      float: left;
-      background: #FFE066;
-      color: #F25F5C;
-      text-align: center;
-      line-height: 8em;
-
-      &:first-child {
-        border-bottom: 1px solid #F25F5C;
-      }
-
-      &:last-child {
-        border-top: 1px solid #F25F5C;
-      }
-
-      &:active {
-        background-color: #ffe993;
-      }
-
-      &:hover {
-        background-color: #ffe993;
-      }
-    }
-
-  }
-
-  > .tab-content {
-    display: inline;
-    width: 75%;
-    height: 100%;
-    float: left;
-    position: relative;
-
-    > div {
-      background-color: #ffe993;
-      position:absolute;
-      top: 0;
-      z-index: 1;
+    > .tab-content {
+      display: inline;
       width: 100%;
       height: 100%;
+      float: left;
+      position: relative;
 
-      &.default{
-        z-index: 0;
-        background-color: #ffe993;
+      .tab {
+        height: calc(100% / 3);
+
+        label {
+          display: block;
+          height: 100%;
+          width: 25%;
+          background: white;
+          text-align: center;
+          margin-left: -1px;
+          position: relative;
+          left: 1px;
+          line-height: 8em;
+          color: lightgray;
+          transition: all 0.35s ease;
+        }
+
+        label:hover {
+          cursor: pointer;
+          background-color: #fdf2f1;
+          color: #f47e7c;
+        }
+
+        .content {
+          position: absolute;
+          left: 25%;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          background: #f47e7c;
+          padding: 20px;
+          color: white;
+        }
+
+        [type=radio] {
+          display: none;
+        }
+
+        [type=radio]:checked ~ label {
+          background: #f47e7c;
+          z-index: 2;
+          color: white;
+        }
+
+        [type=radio]:checked + label + .content {
+          z-index: 1;
+        }
+
       }
-
-      &:not(:target):not(.default) {
-        display: none;
-      }
-
     }
+}
 
+#tab-2 + label {
+  border-top: 1px solid #fdf2f1;
+  border-bottom: 1px solid #fdf2f1;
 
+  &:hover {
+    border-top: 1px solid #fdf2f1;
+    border-bottom: 1px solid #fdf2f1;
   }
 
 }

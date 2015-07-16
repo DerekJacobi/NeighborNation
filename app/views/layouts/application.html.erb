@@ -5,16 +5,24 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,600,200|Oxygen:400,300' rel='stylesheet' type='text/css'>
 </head>
 <body>
+  <header>
+    <div class="logo-container">
+      <div class="logo">
+        NEIGHBOR<span>NATION</span>
+      </div>
+    </div>
+  </header>
 
-<% if flash[:message] %>
-  <div class="message">
-    <%= flash[:message] %>
-  </div>
-<% end %>
+  <% if flash[:message] %>
+    <div class="message">
+      <%= flash[:message] %>
+    </div>
+  <% end %>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>

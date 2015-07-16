@@ -1,6 +1,11 @@
 <div class="login-container">
   <div class="signup-login">
-    <button><a href="<%= new_user_path %>">SignUp</a></button> <button>Login</button>
+    <div class="sign-up">
+      <a href="<%= new_user_path %>">Sign Up</a>
+    </div>
+    <div class="login">
+      <a href="<%= new_session_path %>">Login</a>
+    </div>
   </div>
 
   <form action="<%= session_path %>" method="post">

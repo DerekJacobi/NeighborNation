@@ -23,7 +23,6 @@
 
 html {
   font-size: 20px;
-
 }
 
 a {
@@ -31,48 +30,89 @@ a {
 }
 
 body {
-  font-family: monospace;
-  padding-top: 10%;
-  // background: #B5FFE1;
+  font-family: 'Oxygen' sans-serif;
+  font-weight: 300;
 }
+
+header {
+  height: 200px;
+  width: 100%;
+  font-family: 'Raleway' sans-serif;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* Logo container and Logo */
+
+.logo-container {
+  width: 100%;
+  height: 40%;
+
+  div.logo {
+    padding-top: .75em;
+    font-size: 2em;
+    font-family: 'Raleway' sans-serif;
+    font-weight: 600;
+    margin: 0 auto;
+    text-align: center;
+    color: #ff9466;
+
+    span {
+      font-weight: 200;
+      font-style: italic;
+      color: #989898;
+    }
+
+  }
+
+}
+
+/* Sign up, login forms */
 
 form {
   width: 100%;
-
-  margin: 1rem 0;
+  margin: 0.75rem 0;
   padding: .05rem;
-
-  background: #4E878C;
+  background: white;
 
   input {
     display: block;
     width: 100%;
-
+    border: none;
+    background-color: #f2f2f2;
     height: 2rem;
     padding: 0.5rem;
+    color: #989898;
 
     + input {
       margin-top: 0.5rem;
     }
+
     &[type='submit'] {
+      color: #a9a9a9;
+      margin-top: 0.5rem;
       border: none;
-      background: #4E878C;
+      background: #f2f2f2;
+      line-height: 1em;
+      transition: all 0.25s ease;
 
       &:hover {
-        background: #65B891;
+        background: #ff9466;
+        cursor: pointer;
+        color: white;
       }
+    }
+
+    &:focus {
+      background-color: #ffded1;
     }
   }
 }
 
-.app-window {
-  height: 500px;
-  width: 60%;
-  margin: 0 auto;
-}
-
 .login-container {
-  width: 40%;
+  width: 450px;
   margin: 0 auto;
 }
 
@@ -81,31 +121,45 @@ form {
   justify-content: center;
   height: 35px;
 
-  button {
-    flex-grow: 1;
-    background: #4E878C;
-
-    &:hover {
-      background: #65B891;
-    }
+  div {
+    text-align: center;
+    width: 50%;
 
     a {
+      color: #c1c1c1;
       text-decoration: none;
+      transition: all 0.25s ease;
+
+      &:hover {
+        border-bottom: 1px solid #ff9466;
+        color: #ff9466;
+      }
     }
+  }
+
+  div:first-child {
+    border-right: 1px solid #c1c1c1;
   }
 }
 
 .street {
   display: flex;
   margin-top: 0.5rem;
-  .streetbig{
+
+  .streetbig {
     flex: 2 0 0;
   }
+
   .streetsmall{
     flex: 1 0 0;
   }
+
   input {
     margin-top: 0;
+  }
+
+  input:first-child {
+    margin-right: 0.5rem;
   }
 
 }
@@ -113,7 +167,12 @@ form {
 .location{
   display: flex;
   input {
-    margin-top: 0;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  input:last-child {
+    margin-right: 0;
   }
 }
 
@@ -124,4 +183,15 @@ form {
   font-weight: bold;
   background-color: green;
   font-family: monospace;
+}
+
+/* APP window */
+
+.app-window {
+  height: 500px;
+  width: 60%;
+  margin: 0 auto;
+  -webkit-box-shadow: 3px 7px 25px 0px rgba(0,0,0,0.32);
+  -moz-box-shadow: 3px 7px 25px 0px rgba(0,0,0,0.32);
+  box-shadow: 3px 7px 25px 0px rgba(0,0,0,0.32);
 }
