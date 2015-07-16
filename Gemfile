@@ -29,6 +29,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'best_in_place', '~> 3.0.1'
 
 gem 'responders', '~> 2.0'
+
+ruby '2.2.2'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
