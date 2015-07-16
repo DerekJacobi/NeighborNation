@@ -32,6 +32,8 @@ gem 'responders', '~> 2.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem 'materialize-sass'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'rails_12factor', group: :production

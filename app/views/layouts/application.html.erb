@@ -2,9 +2,10 @@
 <html>
 <head>
   <title>NeighborNation</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,600,200|Oxygen:400,300' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -25,4 +26,5 @@
   <%= yield %>
 
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
 </html>
