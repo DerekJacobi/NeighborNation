@@ -11,16 +11,16 @@
         <div class="content">
           <div>
             <div class="user-show-div">
-              <h2>MY PROFILE</h2>
+              <h4>MY PROFILE</h4>
                 <div class="userphoto">
                   USER PHOTO
                 </div>
-                <h1><%= @user.firstname %> <%= @user.lastname %>, Apt: <%= @user.aptnumber %></h1>
+                <h4><%= @user.firstname %> <%= @user.lastname %>, Apt: <%= @user.aptnumber %></h4>
                 </br>
                 <p>ABOUT ME:</p>
-                <p><%= best_in_place @user, :aboutme %></p>
+                <p class="edit-space"><%= best_in_place @user, :aboutme %></p>
                 <p>MY LOCAL RECOMMENDATIONS: </p>
-                <p><%= best_in_place @user, :recommandations %></p>
+                <p class="edit-space"><%= best_in_place @user, :recommandations %></p>
               </div>
           </div>
         </div>
