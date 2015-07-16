@@ -10,8 +10,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.integer :zip
-      t.string :aboutme
-      t.string :recommandations
+      t.string :aboutme, :default => 'Click here to tell your neighbors a little about yourself'
+      t.string :recommandations, :default => 'Click here to recommend some local hotspots to your neighbors'
 
       t.timestamps null: false
     end
