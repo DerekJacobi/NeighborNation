@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: Neighbor_Nation_production
-  username: Neighbor_Nation
-  password: <%= ENV['NEIGHBOR_NATION_DATABASE_PASSWORD'] %>
