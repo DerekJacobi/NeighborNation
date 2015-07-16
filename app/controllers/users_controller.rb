@@ -1,9 +1,16 @@
 class UsersController < ApplicationController
   before_action :fetch_user, only: [:show,:update]
+  before_action :fetch_all_users, only: [:index, :show, :update]
+
 
   def show
 
   end
+
+  def index
+    fetch_all_users
+  end
+
 
   def create
     @user = User.new(user_params)
@@ -33,6 +40,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def fetch_all_users
+    @all_users = User.all
+  end
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :firstname, :lastname, :street, :aptnumber, :city, :state, :zip, :aboutme, :recommandations)

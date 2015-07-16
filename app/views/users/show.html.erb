@@ -32,6 +32,15 @@
 
         <div class="content">
           <div>
+            <ul class="collapsible" data-collapsible="accordion">
+
+            <% @all_users.each do |user| %>
+            <li>
+              <div class="collapsible-header"><p><%= user.firstname %><%= user.lastname %></p></div>
+              <div class="collapsible-body"><p><%= user.aboutme %></p></div>
+            <% end %>
+            </li>
+            </ul>
 
           <ul class="collapsible" data-collapsible="accordion">
             <li>
@@ -50,7 +59,6 @@
         </div>
       </div>
     </div>
-
 
       <div class="tab">
         <input class="hidden-radio" type="radio" name="tab-group-1" id="tab-3">
