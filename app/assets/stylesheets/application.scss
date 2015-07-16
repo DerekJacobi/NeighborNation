@@ -14,9 +14,9 @@
  *= require_self
  */
 
-// @import "materialize/components/color";
-// $input-border-color: color("grey", "base") !default;
-// @import "materialize";
+@import "materialize/components/color";
+$input-border-color: color("grey", "base") !default;
+@import "materialize";
 
 * {
   margin: 0;
@@ -203,4 +203,9 @@ form {
   -webkit-box-shadow: 3px 7px 25px 0px rgba(0,0,0,0.32);
   -moz-box-shadow: 3px 7px 25px 0px rgba(0,0,0,0.32);
   box-shadow: 3px 7px 25px 0px rgba(0,0,0,0.32);
+}
+[type="radio"]:checked+label:after,
+[type="radio"]+label:after,
+[type="radio"]+label:before{
+  display: none;
 }
