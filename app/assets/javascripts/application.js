@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require best_in_place
+//= require materialize-sprockets
 //= require_tree .
