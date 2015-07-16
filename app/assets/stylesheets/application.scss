@@ -211,27 +211,48 @@ form {
 
 #left-column {
   display: inline-block;
-  width: 150px;
+  width: 100%;
   height: calc(100vh - 150px);
+  min-height: 350px;
 
   div.nav-icon-container {
     height: 25%;
     width: 100%;
-    // background-color: black;
+    text-align: center;
 
-    div.nav-icon {
+    &:first-child {
       text-align: center;
 
       i {
-        color: #ff9466;
+        color: #F25F5C;
+      }
+    }
+
+    &:nth-child(2) {
+
+      i {
+        color: #247BA0;
+      }
+    }
+
+    &:nth-child(3) {
+
+      i {
+        color: #70C1B3;
+      }
+    }
+
+    &:last-child {
+
+      i {
+        color: #FFE066;
       }
     }
   }
 }
 
 #main-column {
-  width: 15%;
-  margin-right: 12%;
+  width: 200px;
 }
 
 
