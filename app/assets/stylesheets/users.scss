@@ -24,6 +24,7 @@
         height: calc(100% / 3);
 
         label {
+          padding: 0 !important;
           display: block;
           height: 100%;
           width: 25%;
@@ -32,7 +33,7 @@
           margin-left: -1px;
           position: relative;
           left: 1px;
-          line-height: 8em;
+          line-height: 9em;
           color: lightgray;
           transition: all 0.35s ease;
         }
@@ -54,8 +55,10 @@
           color: white;
         }
 
-        [type=radio] {
-          display: none !important;
+        [type="radio"]:checked+label:after,
+        [type="radio"]+label:after,
+        [type="radio"]+label:before{
+          display: none;
         }
 
         [type=radio]:checked ~ label {
