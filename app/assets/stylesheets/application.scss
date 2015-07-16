@@ -15,6 +15,10 @@
  */
 
 
+@import "materialize/components/color";
+$input-border-color: color("grey", "base") !default;
+@import "materialize";
+
 * {
   margin: 0;
   padding: 0;
@@ -81,35 +85,37 @@ form {
   input {
     display: block;
     width: 100%;
-    border: none;
-    background-color: #f2f2f2;
-    height: 2rem;
-    padding: 0.5rem;
+    border: none !important;
+    background-color: #f2f2f2 !important;
+    height: 1rem;
     color: #989898;
 
-    + input {
-      margin-top: 0.5rem;
+    &[type='text'], &[type='password'], &[type="email"] {
+      padding-left: 1em;
+      width: calc(100% - 1em);
     }
 
     &[type='submit'] {
       color: white;
-      margin-top: 0.5rem;
+      height: 3em;
+      margin-top: 0.15rem;
       border: none;
-      background: #ff9466;
+      background: #ff9466 !important;
       line-height: 1em;
       transition: all 0.25s ease;
       border: 1px solid white;
 
       &:hover {
-        background: white;
+        background: white !important;
         cursor: pointer;
         color: #ff9466;
-        border: 1px solid #ff9466;
+        border: 1px solid #ff9466 !important;
       }
     }
 
     &:focus {
-      background-color: #ffded1;
+      // background-color: #ffded1 !important;
+      border: none;
     }
   }
 }
@@ -169,13 +175,14 @@ form {
 
 .location{
   display: flex;
+
   input {
     margin-top: 0.5rem;
-    margin-right: 0.5rem;
+    margin-right: 0.5rem !important;
   }
 
   input:last-child {
-    margin-right: 0;
+    margin-right: 0 !important;
   }
 }
 
@@ -197,4 +204,9 @@ form {
   -webkit-box-shadow: 3px 7px 25px 0px rgba(0,0,0,0.32);
   -moz-box-shadow: 3px 7px 25px 0px rgba(0,0,0,0.32);
   box-shadow: 3px 7px 25px 0px rgba(0,0,0,0.32);
+}
+[type="radio"]:checked+label:after,
+[type="radio"]+label:after,
+[type="radio"]+label:before{
+  display: none;
 }
