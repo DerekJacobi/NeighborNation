@@ -34,6 +34,9 @@ gem 'responders', '~> 2.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'rails_12factor', group: :production
+
+ruby "2.2.2"
 
 group :development, :test do
   gem 'annotate'
