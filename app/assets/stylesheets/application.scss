@@ -122,6 +122,7 @@ form {
 .login-container {
   width: 450px;
   margin: 0 auto;
+  margin-left: 0;
 }
 
 .signup-login{
@@ -211,10 +212,29 @@ form {
 #left-column {
   display: inline-block;
   width: 150px;
-  height: 100vh;
+  height: calc(100vh - 150px);
 
   div.nav-icon-container {
     height: 25%;
     width: 100%;
+    // background-color: black;
+
+    div.nav-icon {
+      text-align: center;
+
+      i {
+        color: #ff9466;
+      }
+    }
   }
+}
+
+#main-column {
+  width: 15%;
+  margin-right: 12%;
+}
+
+
+#main-page {
+  display: flex;
 }
