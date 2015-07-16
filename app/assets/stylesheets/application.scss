@@ -40,7 +40,7 @@ body {
 }
 
 header {
-  height: 200px;
+  height: 150px;
   width: 100%;
   font-family: 'Raleway' sans-serif;
 }
@@ -113,9 +113,8 @@ form {
       }
     }
 
-    &:focus {
-      // background-color: #ffded1 !important;
-      border: none;
+      &:focus {
+      border-bottom: 1px solid #ff9466;
     }
   }
 }
@@ -198,10 +197,19 @@ form {
 /* APP window */
 
 .app-window {
+  display: inline-block;
   height: 500px;
   width: 60%;
   margin: 0 auto;
   -webkit-box-shadow: 3px 7px 25px 0px rgba(0,0,0,0.32);
   -moz-box-shadow: 3px 7px 25px 0px rgba(0,0,0,0.32);
   box-shadow: 3px 7px 25px 0px rgba(0,0,0,0.32);
+}
+
+/* Navigation side bar */
+
+#left-column {
+  display: inline-block;
+  width: 150px;
+  height: 100vh;
 }

@@ -9,47 +9,58 @@
   </div>
 
   <form action="<%= users_path %>" method="post">
-    <input type="hidden"
+    <input class="app-border"
+           type="hidden"
            name="authenticity_token"
            value="<%= form_authenticity_token %>">
-    <input type="hidden"
-            name="user[aboutme]"
-            value="Click Here to Edit About Me">
-    <input type="hidden"
+    <input class="app-border"
+           type="hidden"
+           name="user[aboutme]"
+           value="Click Here to Edit About Me">
+    <input class="app-border"
+           type="hidden"
            name="user[recommandations]"
            value="Click Here to Edit Recommendations ">
-    <input type="email"
+    <input class="app-border"
+           type="email"
            name="user[email]"
            placeholder="email">
-    <input type="password"
+    <input class="app-border"
+           type="password"
            name="user[password]"
            placeholder="password">
-    <input type="password"
+    <input class="app-border"
+           type="password"
            name="user[password_confirmation]"
            placeholder="confirm your password">
-    <input type="text"
+    <input class="app-border"
+           type="text"
            name="user[firstname]"
            placeholder="first name">
-    <input type="text"
+    <input class="app-border"
+           type="text"
            name="user[lastname]"
            placeholder="last name">
     <div class="street">
-      <input class="streetbig" type="text"
+      <input class="app-border streetbig" type="text"
              name="user[street]"
              placeholder="street name">
-      <input class="streetsmall" type="text"
+      <input class="app-border streetsmall" type="text"
              name="user[aptnumber]"
              placeholder="apartment #">
     </div>
 
     <div class='location'>
-      <input type="text"
+      <input class="app-border"
+             type="text"
              name="user[city]"
              placeholder="city">
-      <input type="text"
+      <input class="app-border"
+             type="text"
              name="user[state]"
              placeholder="state">
-      <input type="text"
+      <input class="app-border"
+             type="text"
              name="user[zip]"
              placeholder="zip">
     </div>
