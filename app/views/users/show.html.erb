@@ -43,6 +43,7 @@
             <% @all_users.each do |user| %>
             <li>
               <div class="collapsible-header"><p class='userlist'><%= user.firstname %> <%= user.lastname %>, Apt:      <%= user.aptnumber %> </p></div>
+
               <div class="collapsible-body"><p><%= user.aboutme %></p></div>
             <% end %>
             </li>
