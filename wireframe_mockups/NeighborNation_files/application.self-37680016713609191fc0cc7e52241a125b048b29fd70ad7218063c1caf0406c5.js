@@ -10,34 +10,27 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require best_in_place
-//= require materialize-sprockets
-//= require_tree .
+
+
+
+
+
 console.log('jquery file required...');
 
 function animateHamburger() {
   $("#nav-burger").toggleClass('open');
 };
+//
+// function slideMenu() {
+//   $("#menu-wrapper").toggleClass('open');
+//   $("#menu-wrapper").one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd',
+//   function(event) {
+//     $("ul#menu li").toggleClass('trans-end');
+//   });
+// };
 
 $("#nav-burger").on('click', function(){
+  // slideMenu();
+  console.log('on click working');
   animateHamburger();
-  slideMenu();
 });
-// Materialize swipe menu not working well...
-// $(".button-collapse").sideNav();
-// // Show sideNav
-// $('.button-collapse').sideNav('show');
-// // Hide sideNav
-// $('.button-collapse').sideNav('hide');
-
-function slideMenu() {
-  console.log('slide menu starting');
-  $("#menu-wrapper").toggleClass('open');
-  console.log('slide menu ended');
-  // $("#menu-wrapper").one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd',
-  // function(event) {
-  //   $("ul#menu li").toggleClass('trans-end');
-  // });
-};

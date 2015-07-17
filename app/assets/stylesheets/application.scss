@@ -110,10 +110,14 @@ form {
       box-shadow: 1px 4px 6px lightgray;
 
       &:hover {
-        background: white !important;
+        // background: white !important;
         cursor: pointer;
-        color: #ff9466;
-        border: 1px solid #ff9466 !important;
+        background-color: darken(#ff9466, 5%) !important;
+        -moz-box-shadow: 1px 4px 6px darkgray;
+        -webkit-box-shadow: 1px 4px 6px darkgray;
+        box-shadow: 1px 4px 6px darkgray;
+        // color: #ff9466;
+        // border: 1px solid #ff9466 !important;
       }
     }
 
@@ -318,6 +322,7 @@ form {
   top: -100%;
   background-color: #ff9466;
   height: 50px;
+  z-index: 2;
   transition: all .75s ease;
 
     #nav-burger {
@@ -326,7 +331,7 @@ form {
       height: 22px;
       width: 25px;
       margin: 12px 0 0 15px;
-      z-index: 3;
+      z-index: 999;
       flex-direction: column;
       justify-content: space-between;
 
@@ -343,24 +348,47 @@ form {
       }
     }
 
-      #nav-burger.open :first-child {
-        transform: translateX(8px) rotate(45deg);
-      }
+    #nav-burger.open :first-child {
+      transform: translateY(9px) rotate(45deg);
+    }
 
-      #nav-burger.open :nth-child(2) {
-        transform: rotateX(90deg);
-      }
+    #nav-burger.open :nth-child(2) {
+      transform: rotateY(90deg);
+    }
 
-      #nav-burger.open :last-child {
-        transform: translateX(-8px) rotate(-45deg);
-      }
+    #nav-burger.open :last-child {
+      transform: translateY(-9px) rotate(-45deg);
+    }
 }
 
+#menu-wrapper {
+  position: fixed;
+  margin-top: 50px;
+  z-index: 998;
+  left: -150px;
+  width: 150px;
+  height: calc(100vh - 50px);
+  transition: all .35s ease-out;
+  background-color: white;
+  -moz-box-shadow: 1px 3px 6px lightgray;
+  -webkit-box-shadow: 1px 3px 6px lightgray;
+  box-shadow: 1px 3px 6px lightgray;
 
-
-#menu {
-  display: none;
+  &.open {
+    left: 0px;
+  }
 }
+
+// Materialize menu swipe not working well...
+//
+// #menu-wrapper {
+//   position: fixed;
+//   top: -100%;
+//
+//   nav {
+//     background-color: #ff9466;
+//   }
+// }
 
  /* Media Queries */
 
@@ -368,6 +396,10 @@ form {
    #left-column {
      left: -100%;
    }
+  // Materialize menu swipe not working well...
+  //  #menu-wrapper {
+  //    top: 0%;
+  //  }
 
    #main-page, header {
      width: 90%;

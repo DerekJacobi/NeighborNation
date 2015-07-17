@@ -3,7 +3,6 @@
 <head>
   <title>NeighborNation</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -32,16 +31,29 @@
         <span></span>
       </div>
     </div>
+<!--<><><><>< Materialize menu not working well.... <><><><><><>-->
+    <!-- <div id="menu-wrapper">
+      <nav>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#!">First Sidebar Link</a></li>
+          <li><a href="#!">Second Sidebar Link</a></li>
+        </ul>
+        <ul id="slide-out" class="side-nav">
+          <li><a href="#!">First Sidebar Link</a></li>
+          <li><a href="#!">Second Sidebar Link</a></li>
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      </nav>
+    </div> -->
     <div id="menu-wrapper">
       <ul id="menu">
         <li><a href="<%= user_path(current_user) %>">Profile</a></li>
         <li><a href="">Forum</a></li>
         <li><a href="">Calendar</a></li>
         <li><a href="">Suggestion Box</a></li>
-        <!-- <li><a href="/users/login">Log In</a></li> -->
       </ul>
     </div>
-    </div>
+
     <div id="left-column">
       <div class="nav-icon-container">
         <div class="nav-icon">
@@ -96,5 +108,6 @@
     <%= yield %>
   </div>
 </body>
+<%= javascript_include_tag 'application' %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
 </html>
