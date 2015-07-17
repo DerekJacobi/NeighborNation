@@ -34,7 +34,7 @@
     </div>
     <div id="menu-wrapper">
       <ul id="menu">
-        <li><a href="#">Profile</a></li>
+        <li><a href="<% if (@user) %> <%= user_path(@user) %> <% end %>">Profile</a></li>
         <li><a href="">Forum</a></li>
         <li><a href="">Calendar</a></li>
         <li><a href="">Suggestion Box</a></li>
@@ -45,7 +45,7 @@
     <div id="left-column">
       <div class="nav-icon-container">
         <div class="nav-icon">
-          <a href="#"><i class="fa fa-user fa-3x"></i></a>
+          <a href=" <% if (@user) %> <%= user_path(@user) %> <% end %>"><i class="fa fa-user fa-3x"></i></a>
           <div>
             Profile
           </div>
