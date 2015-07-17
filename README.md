@@ -10,7 +10,7 @@ Heroku
 #####Styling
 CSS,
 SASS,
-Materialize CSS, 
+Materialize CSS
 #####API's
 Google Maps, 
 Amazon Web Services
