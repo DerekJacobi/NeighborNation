@@ -47,16 +47,33 @@
     </div> -->
     <div id="menu-wrapper">
       <ul id="menu">
-        <li><a href="<% if (@user) %> <%= user_path(@user) %> <% end %>">Profile</a></li>
-        <li><a href="">Forum</a></li>
-        <li><a href="">Calendar</a></li>
-        <li><a href="">Suggestion Box</a></li>
+        <li><a href="<% if (@user) %> <%= user_path(@user) %> <% end %>"><i class="fa fa-user fa-2x"></i></a>
+          <div>
+            Profile
+          </div>
+        </li>
+        <li><a href=""><i class="fa fa-users fa-2x"></i></a>
+          <div>
+            Forum
+          </div>
+        </li>
+        <li><a href=""><i class="fa fa-calendar fa-2x"></i></a>
+          <div>
+            Calendar
+          </div>
+        </li>
+        <li><a href=""><i class="fa fa-cube fa-2x"></i></a>
+          <div>
+            Suggestion Box
+          </div>
+        </li>
       </ul>
     </div>
 
     <div id="left-column">
       <div class="nav-icon-container">
         <div class="nav-icon">
+          <!-- Add statement so that link doesn't refresh page if user is already there? -->
           <a href=" <% if (@user) %> <%= user_path(@user) %> <% end %>"><i class="fa fa-user fa-3x"></i></a>
           <div>
             Profile
@@ -83,7 +100,7 @@
 
       <div class="nav-icon-container">
         <div class="nav-icon">
-          <a href="#"><i class="fa fa-table fa-3x"></i></a>
+          <a href="#"><i class="fa fa-cube fa-3x"></i></a>
           <div>
             Suggestion Box
           </div>
