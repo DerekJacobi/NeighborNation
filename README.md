@@ -15,7 +15,7 @@ responders,
 bcrypt
 #####API's
 Google Maps, 
-Amazon Web Services
+Amazon Web Services,
 Yelp
 #####Styling
 CSS,
