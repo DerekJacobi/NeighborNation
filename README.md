@@ -1,15 +1,16 @@
 # Neighbor_Nation
 
 ### Technologies Used
-Ruby on Rails
-Ruby
-Javascript
-jQuery
-HTML
+Ruby on Rails,
+Ruby,
+Javascript,
+jQuery,
+HTML,
+Heroku
 #####Styling
-CSS
-SASS
-Materialize CSS
+CSS,
+SASS,
+Materialize CSS, 
 #####API's
-Google Maps
+Google Maps, 
 Amazon Web Services
