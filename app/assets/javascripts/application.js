@@ -33,7 +33,6 @@ $("#nav-burger").on('click', function(){
 // $('.button-collapse').sideNav('hide');
 
 function slideMenu() {
-  if $(window).width()
   console.log('slide menu starting');
   $("#menu-wrapper").toggleClass('open');
   console.log('slide menu ended');
