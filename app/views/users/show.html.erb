@@ -22,6 +22,13 @@
                 <p>My local recommandations: </p>
                 <p class="edit-space"><%= best_in_place @user, :recommandations %></p>
               </div>
+              <p>
+                <%= link_to "Delete Account", user_path, method: "delete" %>
+              </p>
+              <p>
+                <%= link_to "Log out", session_path, method: "delete" %>
+
+              </p>
           </div>
         </div>
       </div>
@@ -46,7 +53,7 @@
 
       <div class="tab">
         <input class="hidden-radio" type="radio" name="tab-group-1" id="tab-3">
-        <label for="tab-3">Settings</label>
+        <label for="tab-3">Around Me</label>
         <div class="content">
           <div id="map-canvas"></div>
         </div>
