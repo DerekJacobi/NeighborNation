@@ -3,7 +3,6 @@
 <head>
   <title>NeighborNation</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -13,8 +12,8 @@
     function initialize() {
       var mapCanvas = document.getElementById('map-canvas');
       var mapOptions = {
-        center: new google.maps.LatLng(47.5403, -60.5463),
-        zoom: 8,
+        center: new google.maps.LatLng(40.7027, -74.0059),
+        zoom: 12,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
       var map = new google.maps.Map(mapCanvas, mapOptions)
@@ -25,10 +24,40 @@
 
 </head>
 <body>
+    <div id="nav-burger-wrapper">
+      <div id="nav-burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+<!--<><><><>< Materialize menu not working well.... <><><><><><>-->
+    <!-- <div id="menu-wrapper">
+      <nav>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#!">First Sidebar Link</a></li>
+          <li><a href="#!">Second Sidebar Link</a></li>
+        </ul>
+        <ul id="slide-out" class="side-nav">
+          <li><a href="#!">First Sidebar Link</a></li>
+          <li><a href="#!">Second Sidebar Link</a></li>
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      </nav>
+    </div> -->
+    <div id="menu-wrapper">
+      <ul id="menu">
+        <li><a href="<% if (@user) %> <%= user_path(@user) %> <% end %>">Profile</a></li>
+        <li><a href="">Forum</a></li>
+        <li><a href="">Calendar</a></li>
+        <li><a href="">Suggestion Box</a></li>
+      </ul>
+    </div>
+
     <div id="left-column">
       <div class="nav-icon-container">
         <div class="nav-icon">
-          <a href="#"><i class="fa fa-user fa-3x"></i></a>
+          <a href=" <% if (@user) %> <%= user_path(@user) %> <% end %>"><i class="fa fa-user fa-3x"></i></a>
           <div>
             Profile
           </div>
@@ -39,7 +68,7 @@
       <div class="nav-icon">
         <a href="#"><i class="fa fa-users fa-3x"></i></a>
         <div>
-          Neighbors
+          Forum
         </div>
       </div>
     </div>
@@ -66,7 +95,11 @@
       <div class="logo-container">
         <div class="logo">
           NEIGHBOR<span>NATION</span>
+
         </div>
+        <span>
+          <%= link_to "Log out", session_path, method: "delete" %>
+        </span>
       </div>
     </header>
   <div id="main-page">
@@ -79,5 +112,6 @@
     <%= yield %>
   </div>
 </body>
+<%= javascript_include_tag 'application' %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
 </html>
