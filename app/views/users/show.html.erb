@@ -6,6 +6,7 @@
 
       <div class="tab">
         <input class="hidden-radio" type="radio" name="tab-group-1" id="tab-1" checked>
+
         <label for="tab-1">Profile</label>
 
         <div class="content">
@@ -22,13 +23,12 @@
                 <p>My local recommandations: </p>
                 <p class="edit-space"><%= best_in_place @user, :recommandations %></p>
               </div>
+              </br>
+
               <p>
                 <%= link_to "Delete Account", user_path, method: "delete" %>
               </p>
-              <p>
-                <%= link_to "Log out", session_path, method: "delete" %>
 
-              </p>
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@
             <ul class="collapsible" data-collapsible="accordion">
             <% @all_users.each do |user| %>
             <li>
-              <div class="collapsible-header"><p class='userlist'><%= user.firstname %> <%= user.lastname %></p></div>
+              <div class="collapsible-header"><p class='userlist'><%= user.firstname %> <%= user.lastname %>, Apt:      <%= @user.aptnumber %> </p></div>
               <div class="collapsible-body"><p><%= user.aboutme %></p></div>
             <% end %>
             </li>
