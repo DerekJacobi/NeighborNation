@@ -12,8 +12,8 @@
     function initialize() {
       var mapCanvas = document.getElementById('map-canvas');
       var mapOptions = {
-        center: new google.maps.LatLng(47.5403, -60.5463),
-        zoom: 8,
+        center: new google.maps.LatLng(40.7027, -74.0059),
+        zoom: 12,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
       var map = new google.maps.Map(mapCanvas, mapOptions)
@@ -112,7 +112,11 @@
       <div class="logo-container">
         <div class="logo">
           NEIGHBOR<span>NATION</span>
+
         </div>
+        <span>
+          <%= link_to "Log out", session_path, method: "delete" %>
+        </span>
       </div>
     </header>
   <div id="main-page">

@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
       t.string :street
-      t.integer :aptnumber
+      t.string :aptnumber
       t.string :city
       t.string :state
       t.integer :zip
