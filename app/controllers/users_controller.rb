@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
 
   def show
-
+    fetch_user
   end
 
   def index

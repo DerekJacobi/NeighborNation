@@ -7,8 +7,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,600,200|Oxygen:400,300' rel='stylesheet' type='text/css'>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <script src="https://maps.googleapis.com/maps/api/js"></script>
+  <script>
+    function initialize() {
+      var mapCanvas = document.getElementById('map-canvas');
+      var mapOptions = {
+        center: new google.maps.LatLng(40.7027, -74.0059),
+        zoom: 12,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      var map = new google.maps.Map(mapCanvas, mapOptions)
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+
+
 </head>
 <body>
     <div id="nav-burger-wrapper">
@@ -49,16 +62,9 @@
             Calendar
           </div>
         </li>
-        <li><a href="<%= suggestions_path %>"><i class="fa fa-cube fa-2x"></i></a>
+        <li><a href=""><i class="fa fa-cube fa-2x"></i></a>
           <div>
             Suggestion Box
-          </div>
-        </li>
-        <li>
-          <div id="logout">
-            <div id="logout-button">
-              <%= link_to "Log Out", session_path, method: "delete" %>
-            </div>
           </div>
         </li>
       </ul>
@@ -94,24 +100,23 @@
 
       <div class="nav-icon-container">
         <div class="nav-icon">
-          <a href="<%= suggestions_path %>"><i class="fa fa-cube fa-3x"></i></a>
+          <a href="#"><i class="fa fa-cube fa-3x"></i></a>
           <div>
             Suggestion Box
           </div>
         </div>
       </div>
-
-      <div id="logout" class="nav-icon-container">
-        <div id="logout-button">
-          <%= link_to "Log Out", session_path, method: "delete" %>
-        </div>
-      </div>
     </div>
+
     <header>
       <div class="logo-container">
         <div class="logo">
           NEIGHBOR<span>NATION</span>
+
         </div>
+        <span>
+          <%= link_to "Log out", session_path, method: "delete" %>
+        </span>
       </div>
     </header>
   <div id="main-page">
@@ -125,17 +130,5 @@
   </div>
 </body>
 <%= javascript_include_tag 'application' %>
- <script>
-  function initialize() {
-    var mapCanvas = document.getElementById('map-canvas');
-    var mapOptions = {
-      center: new google.maps.LatLng(40.7027, -74.0059),
-      zoom: 12,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    var map = new google.maps.Map(mapCanvas, mapOptions)
-  }
-  google.maps.event.addDomListener(window, 'load', initialize);
- </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
 </html>
