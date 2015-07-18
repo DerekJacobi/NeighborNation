@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715134901) do
+ActiveRecord::Schema.define(version: 20150717183646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "suggestions", force: :cascade do |t|
+    t.string   "title"
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "suggestions", ["user_id"], name: "index_suggestions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "firstname"
@@ -22,14 +32,29 @@ ActiveRecord::Schema.define(version: 20150715134901) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "street"
-    t.string   "aptnumber"
+    t.integer  "aptnumber"
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
-    t.string   "aboutme",         default: "Click here to tell your neighbors a little about yourself"
-    t.string   "recommandations", default: "Click here to recommend some local hotspots to your neighbors"
-    t.datetime "created_at",                                                                                null: false
-    t.datetime "updated_at",                                                                                null: false
+    t.string   "aboutme"
+    t.string   "recommandations"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "suggestion_id"
+    t.boolean  "approve"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "votes", ["suggestion_id"], name: "index_votes_on_suggestion_id", using: :btree
+  add_index "votes", ["user_id", "suggestion_id"], name: "index_votes_on_user_id_and_suggestion_id", unique: true, using: :btree
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
+
+  add_foreign_key "suggestions", "users"
+  add_foreign_key "votes", "suggestions"
+  add_foreign_key "votes", "users"
 end

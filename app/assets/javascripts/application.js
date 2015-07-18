@@ -15,7 +15,10 @@
 //= require best_in_place
 //= require materialize-sprockets
 //= require_tree .
-console.log('jquery file required...');
+$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+});
 
 function animateHamburger() {
   $("#nav-burger").toggleClass('open');
@@ -25,6 +28,7 @@ $("#nav-burger").on('click', function(){
   animateHamburger();
   slideMenu();
 });
+
 // Materialize swipe menu not working well...
 // $(".button-collapse").sideNav();
 // // Show sideNav

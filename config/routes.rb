@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-
   root 'sessions#new'
+
+  resources :suggestions
 
   resources :users
   resource :session, only: [:new, :create, :destroy]

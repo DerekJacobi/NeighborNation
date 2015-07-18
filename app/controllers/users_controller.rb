@@ -21,6 +21,7 @@ class UsersController < ApplicationController
       login!(@user)
       redirect_to @user
     else
+      # Try using materialize 'dialogs' for errors?
       flash[:message] = @user.errors.full_messages.to_sentence
       redirect_to new_user_path
     end
