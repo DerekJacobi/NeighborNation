@@ -2,9 +2,7 @@ class SuggestionsController < ApplicationController
   before_action :fetch_all_suggestions, only: [:index, :show, :update]
 
   def index
-    if @all_suggestions == nil
-      render 'index'
-    else
+    if @all_suggestions == nil || @all_suggestions
       render 'index'
     end
   end
