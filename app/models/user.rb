@@ -21,6 +21,11 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  has_many :suggestions
+
+  has_many :votes
+  has_many :voted_suggestions, through: :votes, source: :suggestion
+
   validates :email, presence: true
   validates :password, length: {minimum: 6}, allow_nil: true
   validates :password_digest, presence: true
