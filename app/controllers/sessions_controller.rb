@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
+
   def new
   end
 
   def create
     @user = User.find_by(email: user_params[:email])
-
     if @user && @user.authenticate(user_params[:password])
       login!(@user)
       redirect_to @user
@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    logout!
     redirect_to new_session_path
   end
 

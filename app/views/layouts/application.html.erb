@@ -51,14 +51,15 @@
         </li>
       </ul>
     </div>
+    <% if current_user %>
 
     <div id="left-column">
       <div class="nav-icon-container">
         <div class="nav-icon">
           <!-- Add statement so that link doesn't refresh page if user is already there? -->
-          <a href=" <% if (@user) %> <%= user_path(@user) %> <% end %>"><i class="fa fa-user fa-3x"></i></a>
+          <a href="<% if (current_user) %> <%= user_path(current_user.id) %> <% else %> <%= '#' %> <% end %>"><i class="fa fa-user fa-3x"></i></a>
           <div>
-            Profile
+            Profil
           </div>
         </div>
       </div>
@@ -89,11 +90,12 @@
         </div>
       </div>
 
-      <div id="logout" class="nav-icon-container">
-        <div id="logout-button">
-          <%= link_to "Log Out", session_path, method: "delete" %>
+        <div id="logout" class="nav-icon-container">
+          <div id="logout-button">
+            <%= link_to "Log Out", session_path, method: "delete" %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
 
     <header>
