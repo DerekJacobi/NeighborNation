@@ -11,6 +11,7 @@
   <script src="https://maps.googleapis.com/maps/api/js"></script>
 </head>
 <body>
+
     <div id="nav-burger-wrapper">
       <div id="nav-burger">
         <span></span>
@@ -18,20 +19,7 @@
         <span></span>
       </div>
     </div>
-<!--<><><><>< Materialize menu not working well.... <><><><><><>-->
-    <!-- <div id="menu-wrapper">
-      <nav>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#!">First Sidebar Link</a></li>
-          <li><a href="#!">Second Sidebar Link</a></li>
-        </ul>
-        <ul id="slide-out" class="side-nav">
-          <li><a href="#!">First Sidebar Link</a></li>
-          <li><a href="#!">Second Sidebar Link</a></li>
-        </ul>
-        <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-      </nav>
-    </div> -->
+
     <div id="menu-wrapper">
       <ul id="menu">
         <li><a href="<% if (@user) %> <%= user_path(@user) %> <% end %>"><i class="fa fa-user fa-2x"></i></a>
@@ -107,6 +95,7 @@
         </div>
       </div>
     </div>
+
     <header>
       <div class="logo-container">
         <div class="logo">
@@ -122,6 +111,7 @@
     <% end %>
 
     <%= yield %>
+    <%= yield :header %>
   </div>
 </body>
 <%= javascript_include_tag 'application' %>
