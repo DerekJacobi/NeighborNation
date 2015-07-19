@@ -38,6 +38,8 @@ ruby '2.2.2'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem 'pry'
+
 gem 'materialize-sass'
 
 # Use Capistrano for deployment
