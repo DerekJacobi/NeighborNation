@@ -13,6 +13,13 @@
  *= require_tree .
  *= require_self
  */
+ // header {
+ //   height: 250px;
+ //   width: 100%;
+ //   font-family: 'Raleway' sans-serif;
+ //   background-color: #ff9466;
+ //   transition: all .75s ease-out;
+ // }
 
 
 @import "materialize/components/color";
@@ -40,11 +47,8 @@ body {
 }
 
 header {
-  height: 150px;
-  width: calc(100% - 300px);
-  margin-left: 200px;
+  width: 100%;
   font-family: 'Raleway' sans-serif;
-  margin-right: 100px;
   transition: all .75s ease-out;
 }
 
@@ -55,25 +59,68 @@ input:focus {
 /* Logo container and Logo */
 
 .logo-container {
-  width: 100%;
-  height: 40%;
+  width: calc(100% - 300px);
+  height: 150px;
+  margin-left: 200px;
+  margin-right: 100px;
 
   div.logo {
     padding-top: .75em;
     font-size: 2em;
     font-family: 'Raleway' sans-serif;
-    font-weight: 600;
     margin: 0 auto;
     text-align: center;
-    color: #ff9466;
 
-    span {
+    span:first-child {
+      color: #ff9466;
+      font-weight: 600;
+    }
+
+    span:last-child {
       font-weight: 200;
       font-style: italic;
       color: #989898;
     }
   }
 }
+
+
+ .logo-expanded {
+   height: 250px;
+   width: 100%;
+   margin: 0 auto;
+   font-family: 'Raleway' sans-serif;
+   background-color: #ff9466;
+   transition: all .75s ease-out;
+
+   div.logo {
+     padding-top: 2em;
+     font-family: 'Raleway' sans-serif;
+     margin: 0 auto;
+     text-align: center;
+     font-size: 2.5em;
+
+     span:first-child {
+       color: white;
+       font-weight: 600;
+     }
+
+     span:last-child {
+      //  line-height: 6em;
+       font-weight: 200;
+       font-style: italic;
+       color: lighten(#ff9466, 20%);
+     }
+   }
+
+   div.motto {
+     color: lighten(#ff9466, 20%);
+     font-size: 1.5em;
+     font-weight: 200;
+     text-align: center;
+     padding-top: .5em;
+   }
+ }
 
 /* Sign up, login forms */
 
@@ -211,6 +258,41 @@ form {
   font-family: inherit;
 }
 
+/* Welcome Page and message */
+
+#welcome-container-expanded {
+  width: 100%;
+  height: 52vh;
+
+  div#welcome-message-expanded {
+    width: 75%;
+    margin: 0 auto;
+    font-size: 1.75em;
+    font-family: 'Raleway' sans-serif;
+    color: darkgray;
+    text-align: center;
+    padding-top: 3em;
+
+    div:first-child {
+      padding-top: 1.25em;
+    }
+
+    div:last-child {
+      border-bottom: 1px solid lightgray;
+      padding: 1.25em 0;
+
+      i {
+        transition: color .35s ease;
+
+        &:hover {
+          cursor: pointer;
+          color: #ff9466;
+        }
+      }
+    }
+  }
+}
+
 /* APP window */
 
 .app-window {
@@ -336,6 +418,18 @@ form {
   -moz-justify-content: center;
   margin-left: 200px;
   margin-right: 100px;
+  transition: all .5s ease-out;
+}
+
+#main-page-expanded {
+  width: 100%;
+  height: calc(100vh - 200px);
+  display: flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
   transition: all .5s ease-out;
 }
 
@@ -511,7 +605,7 @@ form {
   //    top: 0%;
   //  }
 
-   #main-page, header {
+   #main-page, .logo-container {
      width: 90%;
      margin: 0 auto;
    }

@@ -11,7 +11,7 @@
   <script src="https://maps.googleapis.com/maps/api/js"></script>
 </head>
 <body>
-
+  <% if current_user %>
     <div id="nav-burger-wrapper">
       <div id="nav-burger">
         <span></span>
@@ -51,15 +51,14 @@
         </li>
       </ul>
     </div>
-    <% if current_user %>
+
 
     <div id="left-column">
       <div class="nav-icon-container">
         <div class="nav-icon">
-          <!-- Add statement so that link doesn't refresh page if user is already there? -->
           <a href="<% if (current_user) %> <%= user_path(current_user.id) %> <% else %> <%= '#' %> <% end %>"><i class="fa fa-user fa-3x"></i></a>
           <div>
-            Profil
+            Profile
           </div>
         </div>
       </div>
@@ -95,17 +94,48 @@
             <%= link_to "Log Out", session_path, method: "delete" %>
           </div>
         </div>
-      <% end %>
     </div>
+  <% end %>
 
     <header>
+      <% if current_user %>
       <div class="logo-container">
+      <% else %>
+      <div class="logo-expanded">
+      <% end %>
         <div class="logo">
-          NEIGHBOR<span>NATION</span>
+          <span>NEIGHBOR</span><span>NATION</span>
         </div>
+
+      <% if !current_user %>
+        <div class="motto">
+          Discover your neighbors. Start a micro-community.
+        </div>
+      <% end %>
+
       </div>
     </header>
+
+    <% if !current_user %>
+      <div id="welcome-container-expanded">
+        <div id="welcome-message-expanded">
+          Welcome to Neighbor Nation, a platform for apartment neighbors and residents to connect, communicate and create together. Let’s be good neighbors.
+          <div id="come-join">
+            Come join us!
+          </div>
+          <div>
+            <i  id="scroll-button" class="fa fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  <% if current_user %>
   <div id="main-page">
+  <% else %>
+  <div id="main-page-expanded">
+  <% end %>
+
     <% if flash[:message] %>
       <div class="message">
         <%= flash[:message] %>
@@ -117,17 +147,19 @@
   </div>
 </body>
 <%= javascript_include_tag 'application' %>
- <script>
-  function initialize() {
-    var mapCanvas = document.getElementById('map-canvas');
-    var mapOptions = {
-      center: new google.maps.LatLng(40.7027, -74.0059),
-      zoom: 12,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    var map = new google.maps.Map(mapCanvas, mapOptions)
-  }
-  google.maps.event.addDomListener(window, 'load', initialize);
- </script>
+
+<!-- Google maps keeps throwing errors at the moment -->
+ <!-- // <script>
+ //  function initialize() {
+ //    var mapCanvas = document.getElementById('map-canvas');
+ //    var mapOptions = {
+ //      center: new google.maps.LatLng(40.7027, -74.0059),
+ //      zoom: 12,
+ //      mapTypeId: google.maps.MapTypeId.ROADMAP
+ //    }
+ //    var map = new google.maps.Map(mapCanvas, mapOptions)
+ //  }
+ //  google.maps.event.addDomListener(window, 'load', initialize);
+ // </script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
 </html>

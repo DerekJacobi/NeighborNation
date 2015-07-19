@@ -35,6 +35,13 @@ $("#nav-burger").on('click', function(){
 // $('.button-collapse').sideNav('show');
 // // Hide sideNav
 // $('.button-collapse').sideNav('hide');
+var $root = $('html, body');
+$('#scroll-button').click(function() {
+    $root.animate({
+        scrollTop: $("#come-join").offset().top
+    }, 250);
+    return false;
+});
 
 function slideMenu() {
   console.log('slide menu starting');
