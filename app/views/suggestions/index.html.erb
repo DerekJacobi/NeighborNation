@@ -14,6 +14,7 @@
         </p>
 
         <div id="vote-section">
+        <!-------------- if user has not voted, display voting options --------------->
         <% if suggestion.voters.where(id: @current_user.id).count == 0 %>
           <div id="vote-yes">
             <form class="vote-form-yes"
@@ -37,19 +38,22 @@
                       class="vote-button"><i class="fa fa-thumbs-down"></i></button>
             </form>
           </div>
+        <!----------------------------------------------------------------------------->
         <% else %>
-        <div id="vote-yes">
-          For: <%= suggestion.approvals.count %>
-        </div>
-        <div id="vote-no">
-          Against: <%= suggestion.disapprovals.count %>
-        </div>
+        <!-------------- if user has voted, display current voting results --------------->
+          <div id="vote-yes">
+            For: <%= suggestion.approvals.count %>
+          </div>
+          <div id="vote-no">
+            Against: <%= suggestion.disapprovals.count %>
+          </div>
         </div>
         <% end %>
+        <!----------------------------------------------------------------------------->
       </li>
       <% end %>
     </ul>
-    <!-- Modal Structure -->
+    <!---------------------- Modal Structure ---------------------->
     <div id="modal1" class="modal">
       <div class="modal-content">
         <form class="suggestion-form" action="<%= suggestions_path %>" method="post">
@@ -69,9 +73,6 @@
                  value="Make Suggestion!">
         </form>
       </div>
-      <!-- <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-      </div> -->
     </div>
   </div>
 
