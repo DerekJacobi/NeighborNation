@@ -40,7 +40,7 @@ var $root = $('html, body');
 
 $('#scroll-button').click(function() {
     $root.animate({
-        scrollTop: $("#come-join").offset().top
+        scrollTop: $("#scroll-button").offset().top
     }, 250);
     return false;
 });
