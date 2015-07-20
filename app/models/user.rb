@@ -12,8 +12,8 @@
 #  city            :string
 #  state           :string
 #  zip             :integer
-#  aboutme         :string           default("Click here to tell your neighbors a little about yourself")
-#  recommandations :string           default("Click here to recommend some local hotspots to your neighbors")
+#  aboutme         :string           default("Tell your neighbors a little about yourself.")
+#  recommandations :string           default("Recommend your favorite places to your neighbors.")
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -21,9 +21,9 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  has_many :suggestions
+  has_many :suggestions, dependent: :destroy
 
-  has_many :votes
+  has_many :votes, dependent: :destroy
   has_many :voted_suggestions, through: :votes, source: :suggestion
 
   validates :email, presence: true
@@ -36,6 +36,5 @@ class User < ActiveRecord::Base
   validates :city, presence: true
   validates :state, presence: true
   validates :zip, presence: true
-
 
 end

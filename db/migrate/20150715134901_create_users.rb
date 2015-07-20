@@ -11,7 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :state
       t.integer :zip
       t.string :aboutme, :default => 'Tell your neighbors a little about yourself.'
-      t.string :recommandations, :default => 'Recommend some local hotspots to your neighbors.'
+      t.string :recommandations, :default => 'Recommend your favorite places to your neighbors.'
 
       t.timestamps null: false
     end

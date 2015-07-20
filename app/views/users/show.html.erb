@@ -12,21 +12,22 @@
         <div class="content">
           <div>
             <div class="user-show-div">
-              <h5><%= @user.firstname %> <%= @user.lastname %>, Apt: <%= @user.aptnumber %></h5>
+              <h5><%= @user.firstname %> <%= @user.lastname %></h5>
               <div class="user-photo">
                 <!-- Photo -->
               </div>
               </br>
               <div class="user-info">
-                <h6>Bio:</h6>
+                <!-- <h6>Bio:</h6> -->
                 <p><%= @user.aboutme %></p>
-                <h6>My Recommandations: </h6>
+                <h6>My Local Recommandations: </h6>
                 <p><%= @user.recommandations %></p>
               </div>
               </br>
-              </div>
-
+            </div>
+            <div class="content-footer">
               <a id="edit-button" class="modal-trigger" href="#modal1">Edit Profile</a>
+            </div>
           </div>
         </div>
       </div>
@@ -78,14 +79,16 @@
           <textarea id="user-aboutme"
                  type="text"
                  name="user[aboutme]"><%= @user.aboutme %></textarea>
-          <label>My Recommandations</label>
+          <label>My Local Recommandations</label>
           <input type="text"
                  name="user[recommandations]"
                  value="<%= @user.recommandations %>">
           <input type="submit"
                  value="Update">
         </form>
-        <a id="delete-button" class="modal-trigger" href="#modal2">Delete Account</a>
+        <div id="delete-section">
+          <a id="delete-button" class="modal-trigger" href="#modal2">Delete Account</a>
+        </div>
       </div>
     </div>
     <!---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->

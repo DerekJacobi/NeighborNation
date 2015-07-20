@@ -62,6 +62,23 @@
           -webkit-box-shadow: -2px 2px 4px lightgray;
           box-shadow: -2px 2px 4px lightgray;
 
+          div {
+            div.content-footer {
+              position: relative;
+              text-align: right;
+
+              a {
+                color: darkgray;
+                transition: all .25s ease;
+
+                &:hover {
+                  color: #f58a89;
+                  border-bottom: 1px solid #f58a89;
+                }
+              }
+            }
+          }
+
           ul {
             padding: 0;
 
@@ -83,6 +100,13 @@
                   color: #f58a89;
                   // background-color: darken(#f58a89, 5%);
                   border-bottom: 1px solid darken(#f58a89, 10%);
+                }
+              }
+
+              div.collapsible-body {
+
+                p {
+                  color: darkgray;
                 }
               }
             }
@@ -142,12 +166,20 @@
    }
 
    div.user-info {
-     text-align: left;
+     p:first-child {
+       font-size: 1.25em;
+       color: darkgray;
+       padding-top: 1em;
+       padding-bottom: 2em;
+     }
+
+     p:last-child {
+       color: darkgray;
+     }
 
      h6 {
        font-size: 1.125em;
      }
-
    }
 }
 
@@ -182,6 +214,26 @@
             border-bottom: 1px solid #ff9466;
           }
         }
+      }
+    }
+  }
+}
+
+.modal-content {
+
+  #delete-section {
+    display: block;
+    padding: 0 10px;
+    width: 90%;
+    margin: 2% auto;
+    text-align: right;
+
+    a {
+      color: darkgray;
+
+      &:hover {
+        color: #ff9466;
+        border-bottom: 1px solid #ff9466;
       }
     }
   }

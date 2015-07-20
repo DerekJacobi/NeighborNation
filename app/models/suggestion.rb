@@ -11,7 +11,7 @@
 #
 
 class Suggestion < ActiveRecord::Base
-  has_many :votes
+  has_many :votes, dependent: :destroy
   has_many :voters, through: :votes
 
   scope :approvals, -> { joins(:votes).where(votes: { approve: true }) }
