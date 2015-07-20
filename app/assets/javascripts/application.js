@@ -44,16 +44,3 @@ $('#scroll-button').click(function() {
     }, 250);
     return false;
 });
-
-
-//************ Vote Code ************//
-// var $vote-button = $('.vote-button');
-//
-// $vote-button.on('click', function() {
-//   console.log('vote button working');
-// });
-//
-// var vote = {
-//   count: null,
-//
-// };
