@@ -57,6 +57,7 @@
 
       p {
         font-size: .85em !important;
+        margin-bottom: 40px;
       }
     }
 
@@ -91,6 +92,7 @@
 
 #vote-section {
   width: 100%;
+  height: 30px;
   display: flex;
   display: -webkit-flex;
   display: -moz-flex;
@@ -103,11 +105,13 @@
   -moz-flex-wrap: wrap;
   position: absolute;
   bottom: 0;
+  margin: 5px 0;
 
   div#vote-yes, div#vote-no {
     width: 48%;
 
     form {
+      margin: 0;
 
       button {
         outline: none;
