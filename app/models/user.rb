@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :suggestions
+  has_many :forums
 
   has_many :votes
   has_many :voted_suggestions, through: :votes, source: :suggestion

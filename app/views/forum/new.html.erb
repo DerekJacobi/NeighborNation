@@ -17,17 +17,81 @@
 
 <div id="forum-items">
 
-  <div class="forum-content">
-    <h6>Classified Ads</h6>
-  </div>
+      <ul class="collapsible" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header">
+          <p class='userlist'>Classified Ads </p></div>
+        <div class="collapsible-body">
+          <span>Classified ads posted by your neighbors</span>
+          </br>
+          <a id="add-button" class="modal-trigger" href="#classified-modal">Create New</a>
+          <a href="#">View All</a></div>
+      </li>
+      <li>
+        <div class="collapsible-header">
+          <p class='userlist'>Announcements </p></div>
+        <div class="collapsible-body">
+          <span>Announcements from your buildings manager</span></br>
+          <a href="#">View All</a></div>
+      </li>
+      <li>
+        <div class="collapsible-header">
+          <p class='userlist'>Requests </p></div>
+        <div class="collapsible-body">
+          <span>Requests for goods and services made by the residents of your building</span>
+          </br>
+           <a id="add-button" class="modal-trigger" href="#request-modal">Create New</a>
+           <a href="#">View All</a></div>
+      </li>
+      </ul>
+</div>
 
-  <div class="forum-content">
-    <h6>Announcements</h6>
-  </div>
+</div>
 
-  <div class="forum-content">
-    <h6>Requests</h6>
+<div id="classified-modal" class="modal">
+  <div class="modal-content">
+    <form class="classified-form" action="<%= forums_path %>" method="post">
+      <input type="hidden"
+             name="authenticity_token"
+             value="<%= form_authenticity_token %>">
+      <input type="hidden"
+             value="classified"
+             name="forum[forum_type]">
+      <label id="ad-title">Ad Topic</label>
+      <input type="text"
+             name="forum[topic]"
+             placeholder="Enter topic for Ad">
+      <label>Classified Information</label>
+      <textarea id="ad-content"
+             type="text"
+             name="forum[content]"
+             placeholder="Enter classified information"></textarea>
+      <input type="submit"
+             value="Create Classified Ad!">
+    </form>
   </div>
 </div>
 
+<div id="request-modal" class="modal">
+  <div class="modal-content">
+    <form class="request-form" action="<%= forums_path %>" method="post">
+      <input type="hidden"
+             name="authenticity_token"
+             value="<%= form_authenticity_token %>">
+      <input type="hidden"
+             value="request"
+             name="forum[forum_type]">
+      <label id="request-title">Request Topic</label>
+      <input type="text"
+             name="forum[topic]"
+             placeholder="Enter topic for your request">
+      <label>Request Information</label>
+      <textarea id="request-content"
+             type="text"
+             name="forum[content]"
+             placeholder="Enter request information"></textarea>
+      <input type="submit"
+             value="Create Request!">
+    </form>
+  </div>
 </div>
