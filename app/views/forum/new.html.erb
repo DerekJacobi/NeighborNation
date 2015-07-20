@@ -25,7 +25,13 @@
           <span>Classified ads posted by your neighbors</span>
           </br>
           <a id="add-button" class="modal-trigger" href="#classified-modal">Create New</a>
-          <a href="#">View All</a></div>
+          </br>
+          <% @all_forum.each do |forum| %>
+            <span><%= forum.topic %></span> |
+            <span><%= forum.content %></span> |
+          </br>
+          <% end %>
+        </div>
       </li>
       <li>
         <div class="collapsible-header">
