@@ -131,7 +131,58 @@
 }
 
 .user-show-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
+
+   div.user-photo {
+     width: 100px;
+     height: 100px;
+     border-radius: 100px;
+     border: 1px solid #ff9466;
+     margin: 0 auto;
+   }
+
+   div.user-info {
+     text-align: left;
+
+     h6 {
+       font-size: 1.125em;
+     }
+
+   }
+}
+
+#modal2 {
+
+  div.modal-content {
+    text-align: center;
+
+    h5 {
+      color: #ff9466;
+    }
+
+    div.delete_options {
+      display: flex;
+      display: -webkit-flex;
+      display: -moz-flex;
+      justify-content: center;
+      -webkit-justify-content: center;
+      -moz-justify-content: center;
+
+      div {
+        font-size: 1.125em;
+        width: 50%;
+        display: inline-block;
+
+        a {
+          color: darkgray;
+          transition: all .25s ease;
+
+          &:hover {
+            color: #ff9466;
+            border-bottom: 1px solid #ff9466;
+          }
+        }
+      }
+    }
+  }
 }

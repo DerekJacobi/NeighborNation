@@ -14,7 +14,7 @@
         </p>
 
         <div id="vote-section">
-        <!-------------- if user has not voted, display voting options --------------->
+        <!--~~~~~~~~~~~~ if user has not voted, display voting options --------------->
         <% if suggestion.voters.where(id: @current_user.id).count == 0 %>
           <div id="vote-yes">
             <form class="vote-form-yes"
@@ -40,7 +40,7 @@
           </div>
         <!----------------------------------------------------------------------------->
         <% else %>
-        <!-------------- if user has voted, display current voting results --------------->
+        <!--~~~~~~~~~ if user has voted, display current voting results --------------->
           <div id="vote-yes">
             For: <%= suggestion.approvals.count %>
           </div>
@@ -53,7 +53,7 @@
       </li>
       <% end %>
     </ul>
-    <!---------------------- Modal Structure ---------------------->
+    <!--~~~~~~~~~~~~~~~~~~ Modal Structure ---------------------->
     <div id="modal1" class="modal">
       <div class="modal-content">
         <form class="suggestion-form" action="<%= suggestions_path %>" method="post">
