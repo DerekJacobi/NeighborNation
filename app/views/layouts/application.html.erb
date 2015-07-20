@@ -40,7 +40,7 @@
             Profile
           </div>
         </li>
-        <li><a href=""><i class="fa fa-users fa-2x"></i></a>
+        <li><a href="<%= forum_path(current_user.id) %>"><i class="fa fa-users fa-2x"></i></a>
           <div>
             Forum
           </div>
@@ -77,7 +77,7 @@
 
     <div class="nav-icon-container">
       <div class="nav-icon">
-        <a href="#"><i class="fa fa-users fa-3x"></i></a>
+        <a href="<%= forum_path(current_user.id) %>"><i class="fa fa-users fa-3x"></i></a>
         <div>
           Forum
         </div>
@@ -149,9 +149,9 @@
   <% end %>
 
     <% if flash[:message] %>
-      <div class="message">
+      <p class="message">
         <%= flash[:message] %>
-      </div>
+      </p>
     <% end %>
 
     <%= yield %>
@@ -168,7 +168,6 @@
 
 </body>
 <%= javascript_include_tag 'application' %>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
 </html>

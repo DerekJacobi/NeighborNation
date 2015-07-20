@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :fetch_user, only: [:show,:update]
+  before_action :fetch_user, only: [:show,:update, :destroy]
   before_action :fetch_all_users, only: [:index, :show, :update]
 
 
@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user.destroy
     redirect_to new_user_path
   end
 
