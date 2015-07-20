@@ -37,8 +37,8 @@ gem 'materialize-sass'
 ruby '2.2.2'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
-gem 'pry'
+# 
+# gem 'pry'
 
 gem 'materialize-sass'
 

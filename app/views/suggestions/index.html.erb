@@ -12,6 +12,40 @@
         <p>
           <%= suggestion.content %>
         </p>
+
+        <div id="vote-section">
+        <% if suggestion.voters.where(id: @current_user.id).count == 0 %>
+          <div id="vote-yes">
+            <form class="vote-form-yes"
+                  action="<%= suggestions_path %>/<%= suggestion.id %>/yes"
+                  method="post">
+              <input  type="hidden"
+                      name="authenticity_token"
+                      value="<%= form_authenticity_token %>">
+              <button type="submit"
+                      class="vote-button"><i class="fa fa-thumbs-up"></i></button>
+            </form>
+          </div>
+          <div id="vote-no">
+            <form class="vote-form-no"
+                  action="<%= suggestions_path %>/<%= suggestion.id %>/no"
+                  method="post">
+              <input  type="hidden"
+                      name="authenticity_token"
+                      value="<%= form_authenticity_token %>">
+              <button type="submit"
+                      class="vote-button"><i class="fa fa-thumbs-down"></i></button>
+            </form>
+          </div>
+        <% else %>
+        <div id="vote-yes">
+          For: <%= suggestion.approvals.count %>
+        </div>
+        <div id="vote-no">
+          Against: <%= suggestion.disapprovals.count %>
+        </div>
+        </div>
+        <% end %>
       </li>
       <% end %>
     </ul>

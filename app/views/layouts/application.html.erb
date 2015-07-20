@@ -118,7 +118,7 @@
     <% if !current_user %>
       <div id="welcome-container-expanded">
         <div id="welcome-message-expanded">
-          Welcome to Neighbor Nation, a platform for apartment neighbors and residents to connect, communicate and create together. Let’s be good neighbors.
+          Welcome to Neighbor Nation, a platform for apartment tenants and residents to connect, communicate and create together. Let’s be good neighbors.
           <div id="come-join">
             Come join us!
           </div>
@@ -144,6 +144,15 @@
     <%= yield %>
     <%= yield :header %>
   </div>
+
+  <% if !current_user %>
+  <footer>
+    <div class="footer-container">
+
+    </div>
+  </footer>
+  <% end %>
+
 </body>
 <%= javascript_include_tag 'application' %>
 

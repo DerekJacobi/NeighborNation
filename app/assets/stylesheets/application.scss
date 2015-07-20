@@ -52,6 +52,11 @@ header {
   transition: all .75s ease-out;
 }
 
+footer {
+  width: 100%;
+  transition: all .75s ease-out;
+}
+
 input:focus {
   outline: none;
 }
@@ -265,7 +270,7 @@ form {
   // height: 52vh;
 
   div#welcome-message-expanded {
-    width: 75%;
+    width: 80%;
     margin: 0 auto;
     font-size: 1.75em;
     font-family: 'Raleway' sans-serif;
@@ -424,7 +429,7 @@ form {
 
 #main-page-expanded {
   width: 100%;
-  height: calc(100vh - 200px);
+  height: 73vh;
   display: flex;
   display: -moz-flex;
   display: -webkit-flex;
@@ -583,17 +588,13 @@ form {
   }
 }
 
+/* Footer */
 
-// Materialize menu swipe not working well...
-//
-// #menu-wrapper {
-//   position: fixed;
-//   top: -100%;
-//
-//   nav {
-//     background-color: #ff9466;
-//   }
-// }
+.footer-container {
+  width: 100%;
+  height: 75px;
+  background-color: #ff9466;
+}
 
  /* Media Queries */
 

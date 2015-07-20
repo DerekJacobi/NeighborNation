@@ -32,6 +32,8 @@
       margin: .125em;
       padding: .5%;
       transition: all .25s ease;
+      color: darkgray;
+      position: relative;
 
       &:first-child {
         padding-top: 50px;
@@ -83,6 +85,44 @@
     &:focus {
       outline: none;
       background-color: #ffe9e0;
+    }
+  }
+}
+
+#vote-section {
+  width: 100%;
+  display: flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -oz-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  position: absolute;
+  bottom: 0;
+
+  div#vote-yes, div#vote-no {
+    width: 48%;
+
+    form {
+
+      button {
+        outline: none;
+        border: none;
+        background-color: white;
+        color: darkgray;
+
+        i {
+          transition: color .25s ease;
+        }
+
+        i:hover {
+          color: #FFE066;
+        }
+      }
     }
   }
 }
