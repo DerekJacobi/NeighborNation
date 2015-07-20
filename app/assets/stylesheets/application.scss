@@ -392,6 +392,9 @@ form {
   }
 }
 
+.content {
+    overflow: scroll;
+}
 #logout {
   height: 15% !important;
   text-align: center;
