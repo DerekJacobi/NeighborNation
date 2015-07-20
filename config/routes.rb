@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   resources :suggestions
 
+  post 'suggestions/:id/yes' => 'votes#vote_yes', as: :vote_yes
+
+  post 'suggestions/:id/no' => 'votes#vote_no', as: :vote_no
+
   resources :users
   resource :session, only: [:new, :create, :destroy]
 

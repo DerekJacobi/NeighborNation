@@ -16,12 +16,18 @@
 //= require materialize-sprockets
 //= require_tree .
 $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
 });
 
+//************ Nav burger and menu ************//
 function animateHamburger() {
   $("#nav-burger").toggleClass('open');
+};
+
+function slideMenu() {
+  console.log('slide menu starting');
+  $("#menu-wrapper").toggleClass('open');
+  console.log('slide menu ended');
 };
 
 $("#nav-burger").on('click', function(){
@@ -29,19 +35,25 @@ $("#nav-burger").on('click', function(){
   slideMenu();
 });
 
-// Materialize swipe menu not working well...
-// $(".button-collapse").sideNav();
-// // Show sideNav
-// $('.button-collapse').sideNav('show');
-// // Hide sideNav
-// $('.button-collapse').sideNav('hide');
+//************ Auto Scroll ************//
+var $root = $('html, body');
 
-function slideMenu() {
-  console.log('slide menu starting');
-  $("#menu-wrapper").toggleClass('open');
-  console.log('slide menu ended');
-  // $("#menu-wrapper").one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd',
-  // function(event) {
-  //   $("ul#menu li").toggleClass('trans-end');
-  // });
-};
+$('#scroll-button').click(function() {
+    $root.animate({
+        scrollTop: $("#come-join").offset().top
+    }, 250);
+    return false;
+});
+
+
+//************ Vote Code ************//
+// var $vote-button = $('.vote-button');
+//
+// $vote-button.on('click', function() {
+//   console.log('vote button working');
+// });
+//
+// var vote = {
+//   count: null,
+//
+// };

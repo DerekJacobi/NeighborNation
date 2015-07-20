@@ -17,4 +17,5 @@ class Suggestion < ActiveRecord::Base
   def disapprovals
     Suggestion.disapprovals.where(id: self.id)
   end
+
 end
