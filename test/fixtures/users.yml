@@ -8,12 +8,12 @@
 #  email           :string
 #  password_digest :string
 #  street          :string
-#  aptnumber       :integer
+#  aptnumber       :string
 #  city            :string
 #  state           :string
 #  zip             :integer
-#  aboutme         :string
-#  recommandations :string
+#  aboutme         :string           default("Click here to tell your neighbors a little about yourself")
+#  recommandations :string           default("Click here to recommend some local hotspots to your neighbors")
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

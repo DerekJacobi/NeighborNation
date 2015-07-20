@@ -27,7 +27,7 @@
             Profile
           </div>
         </li>
-        <li><a href=""><i class="fa fa-users fa-2x"></i></a>
+        <li><a href="<%= forum_path(current_user.id) %>"><i class="fa fa-users fa-2x"></i></a>
           <div>
             Forum
           </div>
@@ -64,7 +64,7 @@
 
     <div class="nav-icon-container">
       <div class="nav-icon">
-        <a href="#"><i class="fa fa-users fa-3x"></i></a>
+        <a href="<%= forum_path(current_user.id) %>"><i class="fa fa-users fa-3x"></i></a>
         <div>
           Forum
         </div>
