@@ -64,7 +64,7 @@
   }
 }
 
-.suggestion-form {
+.suggestion-form, .user-edit-form {
 
   width: 90%;
   margin: 3% auto;
@@ -76,7 +76,7 @@
   }
 
   textarea {
-    min-height: 270px;
+    min-height: 250px;
     resize: none;
     border: none;
     background-color: #f2f2f2;
@@ -88,6 +88,20 @@
       background-color: #ffe9e0;
     }
   }
+}
+
+.user-edit-form {
+
+  margin: 2% auto;
+  padding: 10px;
+
+  textarea {
+    min-height: 200px;
+  }
+}
+
+.modal {
+  max-height: 80% !important;
 }
 
 #vote-section {
