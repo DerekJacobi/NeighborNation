@@ -69,11 +69,11 @@
 
               a {
                 color: darkgray;
-                transition: all .25s ease;
+                transition: color .35s ease;
 
                 &:hover {
                   color: #f58a89;
-                  border-bottom: 1px solid #f58a89;
+                  // border-bottom: 1px solid #f58a89;
                 }
               }
             }
@@ -86,6 +86,13 @@
               color: #f58a89;
 
               div.collapsible-header {
+                &:hover {
+
+                  > p {
+                    text-decoration: underline;
+                    color: darkgray;
+                  }
+                }
 
                 p {
                   color: #f58a89;
@@ -160,17 +167,27 @@
    div.user-photo {
      width: 100px;
      height: 100px;
+     padding-top: 20px;
      border-radius: 100px;
-     border: 1px solid #ff9466;
+     border: 1px solid #f58a89;
+     background-color: #f58a89;
      margin: 0 auto;
+
+     i {
+       color: white;
+     }
    }
 
    div.user-info {
+     width: 95%;
+     margin: 0 auto;
+
      p:first-child {
        font-size: 1.25em;
        color: darkgray;
        padding-top: 1em;
        padding-bottom: 2em;
+       border-top: 1px solid lightgray;
      }
 
      p:last-child {

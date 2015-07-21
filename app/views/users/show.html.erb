@@ -12,10 +12,13 @@
         <div class="content">
           <div>
             <div class="user-show-div">
-              <h5><%= @user.firstname %> <%= @user.lastname %></h5>
-              <div class="user-photo">
-                <!-- Photo -->
+              <div class="content-footer">
+                <a id="edit-button" class="modal-trigger" href="#modal1"><small><i class="fa fa-cog fa-2x"></i></small></a>
               </div>
+              <div class="user-photo">
+                <i class="fa fa-user fa-5x"></i>
+              </div>
+              <h5><%= @user.firstname %> <%= @user.lastname %></h5>
               </br>
               <div class="user-info">
                 <!-- <h6>Bio:</h6> -->
@@ -25,9 +28,6 @@
               </div>
               </br>
             </div>
-              <div class="content-footer">
-                <a id="edit-button" class="modal-trigger" href="#modal1">Edit Profile</a>
-              </div>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
         <label for="tab-3">Around Me</label>
         <div class="content">
           <iframe
-            width="600"
+            width="595"
             height="450"
             frameborder="0" style="border:0"
             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDQu_UYU4bSdgn0u1vG2EqcfM9WFbpNe_I
