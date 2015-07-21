@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   post 'suggestions/:id/no' => 'votes#vote_no', as: :vote_no
 
-  resources :forum
+  resources :forums
   resources :users
   resource :session, only: [:new, :create, :destroy]
 
