@@ -54,7 +54,13 @@
         <input class="hidden-radio" type="radio" name="tab-group-1" id="tab-3">
         <label for="tab-3">Around Me</label>
         <div class="content">
-          <div id="map-canvas"></div>
+          <iframe
+            width="600"
+            height="450"
+            frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDQu_UYU4bSdgn0u1vG2EqcfM9WFbpNe_I
+            &q=in+<%=@user.zip%>&zoom=15" allowfullscreen>
+          </iframe>
         </div>
       </div>
     </div>
