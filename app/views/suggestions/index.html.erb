@@ -5,9 +5,72 @@
     <ul>
       <li>
         <a id="add-button" class="modal-trigger" href="#modal1"><i class="fa fa-plus fa-3x"></i></a>
+
+        <!--~~~~~~~~~~~~~~~~~~ Modal 1 Structure ---------------------->
+          <div id="modal1" class="modal">
+            <div class="modal-content">
+              <form class="suggestion-form" action="<%= suggestions_path %>" method="post">
+                <input type="hidden"
+                       name="authenticity_token"
+                       value="<%= form_authenticity_token %>">
+                <label id="suggestion-title">Title</label>
+                <input type="text"
+                       name="suggestion[title]"
+                       placeholder="Enter title">
+                <label>Content</label>
+                <textarea id="suggestion-content"
+                       type="text"
+                       name="suggestion[content]"
+                       placeholder="Enter suggestion"></textarea>
+                <input type="submit"
+                       value="Make Suggestion!">
+              </form>
+            </div>
+          </div>
+        <!--~~~~~~~~~~~~~~~~ Modal 1 Structure End ~~~~~~~~~~~~~~~~~~-->
       </li>
       <% @all_suggestions.each do |suggestion| %>
       <li>
+        <!--~~~~~ if suggestion belongs to current user, display edit button ----->
+        <% if suggestion.user_id == @current_user.id %>
+        <div class="gear-icon">
+          <i class="fa fa-cog"></i>
+          <ul class="suggest-menu">
+            <li class="suggest-options">
+              <a id="edit-suggestion" class="modal-trigger" href="#modal2">Edit</a>
+            </li>
+            <li class="suggest-options">
+              <%= link_to "Delete", suggestion_path(id: suggestion.id), method: "delete" %>
+            </li>
+          </ul>
+        </div>
+
+        <!--~~~~~~~~~~~~~~~~~~ Modal 2 Structure ---------------------->
+        <div id="modal2" class="modal">
+          <div class="modal-content">
+            <form class="suggestion-form" action="<%= suggestion_path(id: suggestion.id) %>" method="post">
+              <input type="hidden"
+                     name="_method"
+                     value="patch">
+              <input type="hidden"
+                     name="authenticity_token"
+                     value="<%= form_authenticity_token %>">
+              <label id="suggestion-title">Title</label>
+              <input type="text"
+                     name="suggestion[title]"
+                     value="<%= suggestion.title %>">
+              <label>Content</label>
+              <textarea id="suggestion-content"
+                     type="text"
+                     name="suggestion[content]"><%= suggestion.content %></textarea>
+              <input type="submit"
+                     value="Update Suggestion">
+            </form>
+          </div>
+        </div>
+        <% end %>
+        <!--~~~~~~~~~~~~~~~~ Modal 2 Structure End ~~~~~~~~~~~~~~~~~~-->
+
         <h5><%= suggestion.title %></h5>
         <p>
           <%= suggestion.content %>
@@ -24,7 +87,7 @@
                       name="authenticity_token"
                       value="<%= form_authenticity_token %>">
               <button type="submit"
-                      class="vote-button"><i class="fa fa-thumbs-up"></i></button>
+                      class="vote-button"><small><i class="fa fa-thumbs-up fa-2x"></i></small></button>
             </form>
           </div>
           <div id="vote-no">
@@ -35,7 +98,7 @@
                       name="authenticity_token"
                       value="<%= form_authenticity_token %>">
               <button type="submit"
-                      class="vote-button"><i class="fa fa-thumbs-down"></i></button>
+                      class="vote-button"><small><i class="fa fa-thumbs-down fa-2x"></i></small></button>
             </form>
           </div>
         <!----------------------------------------------------------------------------->
@@ -53,27 +116,6 @@
       </li>
       <% end %>
     </ul>
-    <!--~~~~~~~~~~~~~~~~~~ Modal Structure ---------------------->
-    <div id="modal1" class="modal">
-      <div class="modal-content">
-        <form class="suggestion-form" action="<%= suggestions_path %>" method="post">
-          <input type="hidden"
-                 name="authenticity_token"
-                 value="<%= form_authenticity_token %>">
-          <label id="suggestion-title">Title</label>
-          <input type="text"
-                 name="suggestion[title]"
-                 placeholder="Enter title">
-          <label>Content</label>
-          <textarea id="suggestion-content"
-                 type="text"
-                 name="suggestion[content]"
-                 placeholder="Enter suggestion"></textarea>
-          <input type="submit"
-                 value="Make Suggestion!">
-        </form>
-      </div>
-    </div>
   </div>
 
 </div>

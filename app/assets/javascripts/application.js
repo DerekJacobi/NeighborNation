@@ -44,3 +44,12 @@ $('#scroll-button').click(function() {
     }, 250);
     return false;
 });
+
+//************ Edit Suggestions menu ************//
+// function suggestionMenu() {
+//   $(".edit-menu").toggleClass('open');
+// };
+//
+// $("#edit-gear").on('click', function(){
+//   suggestionMenu();
+// });

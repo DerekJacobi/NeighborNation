@@ -36,11 +36,10 @@
       position: relative;
 
       &:first-child {
-        padding-top: 50px;
-        // background: none;
-        // box-shadow: none;
+        display: flex;
 
         a {
+          margin: auto;
           color: #FFE066;
           padding: 25% 25%;
           transition: all .75s ease;
@@ -88,6 +87,59 @@
       background-color: #ffe9e0;
     }
   }
+}
+
+.gear-icon {
+  width: 10%;
+  margin-left: 90%;
+
+  i {
+    padding: 5px;
+
+    + ul.suggest-menu {
+      display: none;
+      background-color: white;
+    }
+  }
+    &:hover {
+
+       ul.suggest-menu {
+        display: block;
+        position: absolute;
+        top: 30px;
+        z-index: 10;
+        width: 60px;
+
+        li.suggest-options {
+          display: flex;
+          display: -webkit-flex;
+          display: -moz-flex;
+          display: -oz-flex;
+          flex-direction: row;
+          -webkit-flex-direction: row;
+          -moz-flex-direction: row;
+          min-height: 40px !important;
+          background: none;
+          border: none;
+
+
+          a {
+            color: darkgray;
+            padding: 25% 25%;
+            margin: auto;
+            transition: all .25s ease;
+            width: 100%;
+
+            &:hover {
+              color: #FFE066;
+              text-decoration: underline;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
 }
 
 .user-edit-form {

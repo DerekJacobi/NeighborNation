@@ -13,6 +13,7 @@
 class Suggestion < ActiveRecord::Base
   has_many :votes, dependent: :destroy
   has_many :voters, through: :votes
+  belongs_to :user, class_name: "User", foreign_key: :user_id
 
   scope :approvals, -> { joins(:votes).where(votes: { approve: true }) }
   scope :disapprovals, -> { joins(:votes).where(votes: { approve: false }) }

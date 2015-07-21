@@ -59,11 +59,13 @@
       </div>
     </div>
 
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~ Modal Structure ~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~ Modal 1 Structure ~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="modal1" class="modal">
       <div class="modal-content">
         <form class="user-edit-form" action="<%= user_path %>" method="post">
-          <input type="hidden" name="_method" value="patch">
+          <input type="hidden"
+                 name="_method"
+                 value="patch">
           <input type="hidden"
                  name="authenticity_token"
                  value="<%= form_authenticity_token %>">
@@ -91,7 +93,8 @@
         </div>
       </div>
     </div>
-    <!---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+    <!---~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Modal 2 Structure ~~~~~~~~~~~~~~~~~~~~-->
     <div id="modal2" class="modal">
       <div class="modal-content">
         <h5>Are you sure you want to delete your account?</h5>

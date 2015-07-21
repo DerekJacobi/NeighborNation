@@ -183,6 +183,7 @@ form {
 
 .login-container {
   width: 450px;
+  margin: 2.5em;
 }
 
 .signup-login{
@@ -593,11 +594,16 @@ form {
 
 /* Footer */
 
-.footer-container {
+.footer-container, .footer-container-absolute {
   width: 100%;
   height: 75px;
   background-color: #ff9466;
   margin-top: 50px;
+}
+
+.footer-container-absolute {
+  position: absolute;
+  bottom: 0;
 }
 
  /* Media Queries */
