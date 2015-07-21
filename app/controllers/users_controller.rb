@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :fetch_user, only: [:show,:update, :destroy]
+  before_action :fetch_user, only: [:show, :update, :destroy]
   before_action :fetch_all_users, only: [:index, :show, :update]
-
+  before_action :secure?, only: [:show, :index]
 
   def show
   end
@@ -42,6 +42,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def secure?
+    if !current_user
+      redirect_to new_session_path
+    elsif @user.id != current_user.id
+      redirect_to current_user
+    end
+  end
 
   def fetch_user
     @user = User.find(params[:id])
