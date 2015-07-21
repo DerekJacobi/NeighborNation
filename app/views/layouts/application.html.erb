@@ -8,20 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,600,200|Oxygen:400,300' rel='stylesheet' type='text/css'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <script src="https://maps.googleapis.com/maps/api/js"></script>
-  <!-- Google maps keeps throwing errors at the moment -->
-    <script>
-     function initialize() {
-       var mapCanvas = document.getElementById('map-canvas');
-       var mapOptions = {
-         center: new google.maps.LatLng(40.7027, -74.0059),
-         zoom: 12,
-         mapTypeId: google.maps.MapTypeId.ROADMAP
-       }
-       var map = new google.maps.Map(mapCanvas, mapOptions)
-     }
-     google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+
 </head>
 <body>
   <% if current_user %>
