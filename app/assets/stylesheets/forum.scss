@@ -14,22 +14,48 @@
   justify-content: flex-start;
   align-items: center;
 
-  div.forum-content {
+  .forum-content {
     display: flex;
     background-color: lighten(#247BA0, 10%);
     width: 100%;
     justify-content: center;
-    height: 15%;
+    // height: 15%;
+    color: white;
     + div {
       margin-top: 16px;
     }
   }
 
   div#forum-search {
-    background-color: white;
-    width: 100%;
+
+    nav {
+
+      div.nav-wrapper {
+
+        form {
+          padding: 0;
+          box-shadow: none;
+          div.input-field {
+            // width: 100% !important;
+
+            input {
+            padding-left: 2rem !important;
+            width: calc(100% - 2rem) !important;
+            margin: 0 auto;
+            }
+          }
+        }
+      }
+    }
   }
 }
+
+
+#forum-search {
+  background-color: white;
+  width: 100%;
+}
+
 #forum-items {
   width: 100%;
   margin-top: 16px;
@@ -40,15 +66,16 @@
   }
 }
 
-
-
-
 .collapsible-header-forum {
-  background-color: lighten(#247BA0, 10%) !important;
+  background-color: white;
+  // border-top: 1px solid lighten(#247BA0, 10%) !important;
+  // border-bottom: 1px solid lighten(#247BA0, 10%) !important;
+  box-shadow: none !important;
+  color: lighten(#247BA0, 10%) !important;
 }
 
-.collapsible-body p {
-  padding: 1rem !important;
+.collapsible-body > * {
+  padding-left: 1rem !important;
 }
 
 .collapsible-body {

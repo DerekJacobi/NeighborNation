@@ -2,7 +2,7 @@
 
   <div class="main-forum-div">
     <div class="forum-content">
-      <h4>Forum for <%= current_user.street%></h4>
+      <h5><%= current_user.street%></h5>
     </div>
     <div id="forum-search">
       <nav>
@@ -111,7 +111,7 @@
   <!-- Popup modals for annoucements, classifieds and requests -->
   <div id="classified-all-modal" class="modal">
     <div class="modal-content">
-      <h5>Classifieds</h5>
+      <h5>Classified Ads</h5>
       <% @all_forum.each do |forum| %>
         <% if forum.forum_type == "classified" %>
           <span><%= forum.topic %></span> |
