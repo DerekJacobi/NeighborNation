@@ -10,19 +10,41 @@
   border: 1px solid lighten(#247BA0, 10%);
   background-color: white;
   display: flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -oz-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -oz-flex-direction: column;
   justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  -oz-justify-content: flex-start;
   align-items: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -oz-align-items: center;
 
   .forum-content {
     display: flex;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -oz-flex;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+    -moz-justify-content: flex-start;
+    -oz-justify-content: flex-start;
     background-color: lighten(#247BA0, 10%);
     width: 100%;
-    justify-content: center;
-    // height: 15%;
     color: white;
     + div {
       margin-top: 16px;
+    }
+
+    h5 {
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 
@@ -70,7 +92,13 @@
 #classified-ads,
 #requests {
   display: flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -oz-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -oz-flex-direction: column;
 
   a {
     margin: auto;
