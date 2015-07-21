@@ -66,6 +66,26 @@
   }
 }
 
+#annoucements,
+#classified-ads,
+#requests {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    margin: auto;
+    padding: 5px 40%;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+#annoucements, #classified-ads {
+  border-bottom: 1px solid lightgray !important;
+}
+
 .collapsible-header-forum {
   background-color: white;
   // border-top: 1px solid lighten(#247BA0, 10%) !important;

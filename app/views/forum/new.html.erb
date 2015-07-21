@@ -22,16 +22,23 @@
 
         <ul class="collapsible" data-collapsible="accordion">
           <li>
-            <div class="collapsible-header collapsible-header-forum">
+            <div id="annoucements">
+              <a id="add-button" class="modal-trigger" href="#announcements-all-modal">Announcements</a>
+            </div>
+
+            <!-- <div class="collapsible-header collapsible-header-forum">
               <p class='userlist'>Announcements</p>
             </div>
             <div class="collapsible-body">
               <span>Announcements from your buildings manager</span></br>
               <a id="add-button" class="modal-trigger" href="#announcements-all-modal">View All</a>
-            </div>
+            </div> -->
           </li>
           <li>
-            <div class="collapsible-header collapsible-header-forum">
+            <div id="classified-ads">
+              <a id="add-button" class="modal-trigger" href="#classified-all-modal">Classified Ads (<%= @classifieds_count%>)</a>
+            </div>
+            <!-- <div class="collapsible-header collapsible-header-forum">
               <p class='userlist'>Classified Ads (<%= @classifieds_count%>) </p>
             </div>
             <div class="collapsible-body">
@@ -39,11 +46,14 @@
               </br>
               <a id="add-button" class="modal-trigger" href="#classified-modal">Create New</a> |
               <a id="add-button" class="modal-trigger" href="#classified-all-modal">View All</a>
-            </div>
+            </div> -->
           </li>
 
           <li>
-            <div class="collapsible-header collapsible-header-forum">
+            <div id="requests">
+              <a id="add-button" class="modal-trigger" href="#request-all-modal">Requests (<%= @requests_count%>)</a>
+            </div>
+            <!-- <div class="collapsible-header collapsible-header-forum">
               <p class='userlist'>Requests (<%= @requests_count%>) </p>
             </div>
             <div class="collapsible-body">
@@ -51,7 +61,7 @@
               </br>
                <a id="add-button" class="modal-trigger" href="#request-modal">Create New</a> |
                <a id="add-button" class="modal-trigger" href="#request-all-modal">View All</a>
-            </div>
+            </div> -->
           </li>
         </ul>
     </div>
@@ -112,6 +122,9 @@
   <div id="classified-all-modal" class="modal">
     <div class="modal-content">
       <h5>Classified Ads</h5>
+      <div>
+        <a id="add-button" class="modal-trigger" href="#classified-modal">Create New</a>
+      </div>
       <% @all_forum.each do |forum| %>
         <% if forum.forum_type == "classified" %>
           <span><%= forum.topic %></span> |
@@ -126,6 +139,9 @@
   <div id="request-all-modal" class="modal">
     <div class="modal-content">
       <h5>Requests</h5>
+      <div>
+        <a id="add-button" class="modal-trigger" href="#request-modal">Create New</a>
+      </div>
       <% @all_forum.each do |forum| %>
         <% if forum.forum_type == "request" %>
           <span><%= forum.topic %></span> |
