@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#new'
+  root 'sessions#new'
 
   resources :suggestions
 
