@@ -1,143 +1,153 @@
-<div class="main-forum-div">
-  <div class="forum-content">
-    <h4>Forum for <%= current_user.street%></h4>
-  </div>
-  <div id="forum-search">
-    <nav>
-    <div class="nav-wrapper">
-      <form>
-        <div class="input-field">
-          <input id="search" type="search" required>
-          <label for="search"><i class="material-icons">search</i></label>
+<div class="app-window">
+
+  <div class="main-forum-div">
+    <div class="forum-content">
+      <h4>Forum for <%= current_user.street%></h4>
+    </div>
+    <div id="forum-search">
+      <nav>
+        <div class="nav-wrapper">
+          <form>
+            <div class="input-field">
+              <input id="search" type="search"
+                                 placeholder="search"
+                                 required>
+            </div>
+          </form>
         </div>
+      </nav>
+    </div>
+
+    <div id="forum-items">
+
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header collapsible-header-forum">
+              <p class='userlist'>Announcements</p>
+            </div>
+            <div class="collapsible-body">
+              <span>Announcements from your buildings manager</span></br>
+              <a id="add-button" class="modal-trigger" href="#announcements-all-modal">View All</a>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header collapsible-header-forum">
+              <p class='userlist'>Classified Ads (<%= @classifieds_count%>) </p>
+            </div>
+            <div class="collapsible-body">
+              <span>Classified ads posted by your neighbors</span>
+              </br>
+              <a id="add-button" class="modal-trigger" href="#classified-modal">Create New</a> |
+              <a id="add-button" class="modal-trigger" href="#classified-all-modal">View All</a>
+            </div>
+          </li>
+
+          <li>
+            <div class="collapsible-header collapsible-header-forum">
+              <p class='userlist'>Requests (<%= @requests_count%>) </p>
+            </div>
+            <div class="collapsible-body">
+              <span>Requests for goods and services made by the residents of your building</span>
+              </br>
+               <a id="add-button" class="modal-trigger" href="#request-modal">Create New</a> |
+               <a id="add-button" class="modal-trigger" href="#request-all-modal">View All</a>
+            </div>
+          </li>
+        </ul>
+    </div>
+
+  </div>
+
+
+  <!-- Modal forms for classifieds and requests -->
+  <div id="classified-modal" class="modal">
+    <div class="modal-content">
+      <form class="classified-form" action="<%= forums_path %>" method="post">
+        <input type="hidden"
+               name="authenticity_token"
+               value="<%= form_authenticity_token %>">
+        <input type="hidden"
+               value="classified"
+               name="forum[forum_type]">
+        <label id="ad-title">Ad Topic</label>
+        <input type="text"
+               name="forum[topic]"
+               placeholder="Enter topic for Ad">
+        <label>Classified Information</label>
+        <textarea id="ad-content"
+               type="text"
+               name="forum[content]"
+               placeholder="Enter classified information"></textarea>
+        <input type="submit"
+               value="Create Classified Ad!">
       </form>
     </div>
-  </nav>
   </div>
 
-<div id="forum-items">
-
-      <ul class="collapsible" data-collapsible="accordion">
-      <li>
-        <div class="collapsible-header collapsible-header-forum">
-          <p class='userlist'>Announcements </p></div>
-        <div class="collapsible-body">
-          <span>Announcements from your buildings manager</span></br>
-          <a id="add-button" class="modal-trigger" href="#announcements-all-modal">View All</a>
-      </li>
-      <li>
-        <div class="collapsible-header collapsible-header-forum">
-          <p class='userlist'>Classified Ads (<%= @classifieds_count%>) </p></div>
-        <div class="collapsible-body">
-          <span>Classified ads posted by your neighbors</span>
-          </br>
-          <a id="add-button" class="modal-trigger" href="#classified-modal">Create New</a> |
-          <a id="add-button" class="modal-trigger" href="#classified-all-modal">View All</a>
-        </div>
-      </li>
-
-      <li>
-        <div class="collapsible-header collapsible-header-forum">
-          <p class='userlist'>Requests (<%= @requests_count%>) </p></div>
-        <div class="collapsible-body">
-          <span>Requests for goods and services made by the residents of your building</span>
-          </br>
-           <a id="add-button" class="modal-trigger" href="#request-modal">Create New</a> |
-           <a id="add-button" class="modal-trigger" href="#request-all-modal">View All</a>
-      </li>
-      </ul>
-</div>
-
-</div>
-
-
-<!-- Modal forms for classifieds and requests -->
-<div id="classified-modal" class="modal">
-  <div class="modal-content">
-    <form class="classified-form" action="<%= forums_path %>" method="post">
-      <input type="hidden"
-             name="authenticity_token"
-             value="<%= form_authenticity_token %>">
-      <input type="hidden"
-             value="classified"
-             name="forum[forum_type]">
-      <label id="ad-title">Ad Topic</label>
-      <input type="text"
-             name="forum[topic]"
-             placeholder="Enter topic for Ad">
-      <label>Classified Information</label>
-      <textarea id="ad-content"
-             type="text"
-             name="forum[content]"
-             placeholder="Enter classified information"></textarea>
-      <input type="submit"
-             value="Create Classified Ad!">
-    </form>
+  <div id="request-modal" class="modal">
+    <div class="modal-content">
+      <form class="request-form" action="<%= forums_path %>" method="post">
+        <input type="hidden"
+               name="authenticity_token"
+               value="<%= form_authenticity_token %>">
+        <input type="hidden"
+               value="request"
+               name="forum[forum_type]">
+        <label id="request-title">Request Topic</label>
+        <input type="text"
+               name="forum[topic]"
+               placeholder="Enter topic for your request">
+        <label>Request Information</label>
+        <textarea id="request-content"
+               type="text"
+               name="forum[content]"
+               placeholder="Enter request information"></textarea>
+        <input type="submit"
+               value="Create Request!">
+      </form>
+    </div>
   </div>
-</div>
 
-<div id="request-modal" class="modal">
-  <div class="modal-content">
-    <form class="request-form" action="<%= forums_path %>" method="post">
-      <input type="hidden"
-             name="authenticity_token"
-             value="<%= form_authenticity_token %>">
-      <input type="hidden"
-             value="request"
-             name="forum[forum_type]">
-      <label id="request-title">Request Topic</label>
-      <input type="text"
-             name="forum[topic]"
-             placeholder="Enter topic for your request">
-      <label>Request Information</label>
-      <textarea id="request-content"
-             type="text"
-             name="forum[content]"
-             placeholder="Enter request information"></textarea>
-      <input type="submit"
-             value="Create Request!">
-    </form>
-  </div>
-</div>
-
-<!-- Popup modals for annoucements, classifieds and requests -->
-<div id="classified-all-modal" class="modal">
-  <div class="modal-content">
-    <h5>Classifieds</h5>
-    <% @all_forum.each do |forum| %>
-      <% if forum.forum_type == "classified" %>
-        <span><%= forum.topic %></span> |
-        <span><%= forum.content %></span> |
-        <a href="#" >Comment</a>
-      </br>
+  <!-- Popup modals for annoucements, classifieds and requests -->
+  <div id="classified-all-modal" class="modal">
+    <div class="modal-content">
+      <h5>Classifieds</h5>
+      <% @all_forum.each do |forum| %>
+        <% if forum.forum_type == "classified" %>
+          <span><%= forum.topic %></span> |
+          <span><%= forum.content %></span> |
+          <a href="#" >Comment</a>
+        </br>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
 
-<div id="request-all-modal" class="modal">
-  <div class="modal-content">
-    <h5>Requests</h5>
-    <% @all_forum.each do |forum| %>
-      <% if forum.forum_type == "request" %>
-        <span><%= forum.topic %></span> |
-        <span><%= forum.content %></span> |
-        <a href="#" >Comment</a>
-      </br>
+  <div id="request-all-modal" class="modal">
+    <div class="modal-content">
+      <h5>Requests</h5>
+      <% @all_forum.each do |forum| %>
+        <% if forum.forum_type == "request" %>
+          <span><%= forum.topic %></span> |
+          <span><%= forum.content %></span> |
+          <a href="#" >Comment</a>
+        </br>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
 
-<div id="announcements-all-modal" class="modal">
-  <div class="modal-content">
-    </br>
-    <% @all_forum.each do |forum| %>
-      <% if forum.forum_type == nil %>
-        <span><%= forum.topic %></span> |
-        <span><%= forum.content %></span> |
+  <div id="announcements-all-modal" class="modal">
+    <div class="modal-content">
       </br>
+      <% @all_forum.each do |forum| %>
+        <% if forum.forum_type == nil %>
+          <span><%= forum.topic %></span> |
+          <span><%= forum.content %></span> |
+        </br>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
+
 </div>

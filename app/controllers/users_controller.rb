@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :secure?, only: [:show, :index]
 
   def show
-
+    
   end
 
 

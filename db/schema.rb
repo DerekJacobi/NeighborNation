@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(version: 20150721141405) do
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
-    t.string   "aboutme",         default: "Click here to tell your neighbors a little about yourself"
-    t.string   "recommandations", default: "Click here to recommend some local hotspots to your neighbors"
-    t.datetime "created_at",                                                                                null: false
-    t.datetime "updated_at",                                                                                null: false
+    t.string   "aboutme",         default: "Tell your neighbors a little about yourself."
+    t.string   "recommandations", default: "Recommend your favorite places to your neighbors."
+    t.datetime "created_at",                                                                    null: false
+    t.datetime "updated_at",                                                                    null: false
   end
 
   create_table "votes", force: :cascade do |t|
