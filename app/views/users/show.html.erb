@@ -20,7 +20,7 @@
               <div class="user-info">
                 <!-- <h6>Bio:</h6> -->
                 <p><%= @user.aboutme %></p>
-                <h6>My Local Recommandations: </h6>
+                <h6>My Local Recommendations: </h6>
                 <p><%= @user.recommandations %></p>
               </div>
               </br>
@@ -87,7 +87,7 @@
           <textarea id="user-aboutme"
                  type="text"
                  name="user[aboutme]"><%= @user.aboutme %></textarea>
-          <label>My Local Recommandations</label>
+          <label>My Local Recommendations</label>
           <input type="text"
                  name="user[recommandations]"
                  value="<%= @user.recommandations %>">
