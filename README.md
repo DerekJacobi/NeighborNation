@@ -8,16 +8,15 @@ jQuery,
 HTML,
 Heroku
 ##### Ruby Gems
-Best In Place,
 Yelp,
 rails_12factor,
 responders,
+Best In Place,
 bcrypt
 #####API's
 Google Maps, 
 Amazon Web Services,
 Yelp
 #####Styling
-CSS,
-SASS,
+SASS/CSS,
 Materialize CSS
