@@ -166,15 +166,16 @@
   flex-direction: row;
   -webkit-flex-direction: row;
   -moz-flex-direction: row;
-  flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
   position: absolute;
   bottom: 0;
   margin: 5px 0;
 
-  div#vote-yes, div#vote-no {
+  div#vote-yes, div#vote-no, div#vote-results {
     width: 48%;
+    margin: 0 20px;
 
     form {
       margin: 0;
@@ -194,6 +195,25 @@
         }
       }
     }
+  }
+}
+
+.vote-progress-bar {
+  background-color: darkgray;
+  position: relative;
+  height: 10px;
+  width: 100%;
+  display: flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -oz-flex;
+  margin: 10px 0;
+
+  div {
+    display: inline-block;
+    height: 10px;
+    background-color: #FFE066;
+    position: absolute;
   }
 }
 

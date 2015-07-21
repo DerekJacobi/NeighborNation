@@ -1,10 +1,10 @@
 class SuggestionsController < ApplicationController
   before_action :fetch_all_suggestions, only: [:index, :show, :update]
   before_action :fetch_suggestion, only: [:destroy, :update]
+
   def index
     if !current_user
       redirect_to new_session_path
-
     end
   end
 
@@ -40,7 +40,6 @@ class SuggestionsController < ApplicationController
   def fetch_all_suggestions
     @all_suggestions = Suggestion.all
   end
-
 
   def suggestion_params
     params.require(:suggestion).permit(:title, :content)

@@ -7,7 +7,7 @@
   height: 100%;
   overflow: auto;
   min-height: 450px;
-  border: 1px solid lighten(#247BA0, 20%);
+  border: 1px solid lighten(#4f95b3, 20%);
   background-color: white;
   display: flex;
   display: -webkit-flex;
@@ -35,7 +35,7 @@
     -webkit-justify-content: flex-start;
     -moz-justify-content: flex-start;
     -oz-justify-content: flex-start;
-    background-color: lighten(#247BA0, 15%);
+    background-color: #4f95b3;
     width: 100%;
     color: white;
     + div {
@@ -117,10 +117,10 @@
 
 .collapsible-header-forum {
   background-color: white;
-  // border-top: 1px solid lighten(#247BA0, 10%) !important;
-  // border-bottom: 1px solid lighten(#247BA0, 10%) !important;
+  // border-top: 1px solid lighten(#4f95b3, 10%) !important;
+  // border-bottom: 1px solid lighten(#4f95b3, 10%) !important;
   box-shadow: none !important;
-  color: lighten(#247BA0, 15%) !important;
+  color: lighten(#4f95b3, 15%) !important;
 }
 
 .collapsible-body > * {

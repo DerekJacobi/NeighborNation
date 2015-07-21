@@ -104,11 +104,17 @@
         <!----------------------------------------------------------------------------->
         <% else %>
         <!--~~~~~~~~~ if user has voted, display current voting results --------------->
-          <div id="vote-yes">
-            For: <%= suggestion.approvals.count %>
+          <div>
+            <small><i style="color: #FFE066" class="fa fa-thumbs-up fa-2x"></i></small>
           </div>
-          <div id="vote-no">
-            Against: <%= suggestion.disapprovals.count %>
+          <div id="vote-results">
+            <div class="vote-progress-bar">
+              <div style="width: <%= (Float(suggestion.approvals.count)/suggestion.votes.count) * 100 %>%;"></div>
+            </div>
+            <!-- For: <%= suggestion.approvals.count %> -->
+          </div>
+          <div>
+            <small><i class="fa fa-thumbs-down fa-2x"></i></small>
           </div>
         </div>
         <% end %>
