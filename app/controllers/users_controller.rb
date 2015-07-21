@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_action :fetch_user, only: [:show,:update, :destroy]
+  before_action :fetch_user, only: [:show, :update, :destroy]
   before_action :fetch_all_users, only: [:index, :show, :update]
 
 
   def show
-    
+
   end
 
 
