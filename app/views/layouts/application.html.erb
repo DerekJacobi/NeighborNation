@@ -4,10 +4,23 @@
   <title>NeighborNation</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,600,200|Oxygen:400,300' rel='stylesheet' type='text/css'>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="//d79i1fxsrar4t.cloudfront.net/jquery.liveaddress/2.7/jquery.liveaddress.min.js"></script>
+<script>var liveaddress = $.LiveAddress({
+	key: "5756176181472831567",
+	addresses: [{
+		street: '#street-address',
+		city: '#city',
+		state: '#state',
+		zipcode: '#zip'
+	}]
+});
+</script>
+
 
 </head>
 <body>
