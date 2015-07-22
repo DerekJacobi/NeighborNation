@@ -9,7 +9,7 @@
   background-color: lighten(#FFE066, 10%);
   overflow: auto;
 
-  ul {
+  > ul {
     width: 100%;
     display: flex;
     display: -webkit-flex;
@@ -23,7 +23,7 @@
     -moz-flex-wrap: wrap;
     padding: .5%;
 
-    li {
+    > li {
       text-align: center;
       width: calc(98.25% / 3);
       min-height: 150px;
@@ -102,15 +102,23 @@
     }
   }
     &:hover {
+      color: #FFE066;
 
        ul.suggest-menu {
         display: block;
         position: absolute;
         top: 30px;
+        right: -1px;
         z-index: 10;
-        width: 60px;
+        width: 85px;
+        padding: 5px;
+        -webkit-box-shadow: 3px 3px 12px 2px rgba(189,185,189,1);
+        -moz-box-shadow: 3px 3px 12px 2px rgba(189,185,189,1);
+        box-shadow: 3px 3px 12px 2px rgba(189,185,189,1);
 
         li.suggest-options {
+          width: 100%;
+          height: 15px;
           display: flex;
           display: -webkit-flex;
           display: -moz-flex;
@@ -118,14 +126,36 @@
           flex-direction: row;
           -webkit-flex-direction: row;
           -moz-flex-direction: row;
+          text-align: left;
           min-height: 40px !important;
           background: none;
           border: none;
 
+          form {
+
+            input[type="submit"] {
+              background: none !important;
+              box-shadow: none !important;
+              color: darkgray;
+              margin: none;
+              height: 20px;
+              margin-top: none;
+
+              &:hover {
+                color: #FFE066;
+                text-decoration: underline;
+                cursor: pointer;
+              }
+            }
+          }
+
+          a#edit-suggestion {
+            padding: none !important;
+          }
 
           a {
             color: darkgray;
-            padding: 25% 25%;
+            padding: none;
             margin: auto;
             transition: all .25s ease;
             width: 100%;

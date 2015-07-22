@@ -42,6 +42,21 @@
             <li class="suggest-options">
               <%= link_to "Delete", suggestion_path(id: suggestion.id), method: "delete" %>
             </li>
+            <li class="suggest-options">
+              <form action="<%= suggestion_path(id: suggestion.id) %>" method="post">
+                <input type="hidden"
+                       name="_method"
+                       value="patch">
+                <input type="hidden"
+                       name="authenticity_token"
+                       value="<%= form_authenticity_token %>">
+                <input type="hidden"
+                       value="false"
+                       name="suggestion[voting]">
+                <input type="submit"
+                       value="End Voting">
+              </form>
+            </li>
           </ul>
         </div>
 
@@ -78,7 +93,7 @@
 
         <div id="vote-section">
         <!--~~~~~~~~~~~~ if user has not voted, display voting options --------------->
-        <% if suggestion.voters.where(id: @current_user.id).count == 0 %>
+        <% if suggestion.voters.where(id: @current_user.id).count == 0 && suggestion.voting == true %>
           <div id="vote-yes">
             <form class="vote-form-yes"
                   action="<%= suggestions_path %>/<%= suggestion.id %>/yes"
@@ -102,7 +117,7 @@
             </form>
           </div>
         <!----------------------------------------------------------------------------->
-        <% else %>
+        <% elsif suggestion.voters.where(id: @current_user.id).count > 0 || suggestion.voting == false %>
         <!--~~~~~~~~~ if user has voted, display current voting results --------------->
           <div>
             <small><i style="color: #FFE066" class="fa fa-thumbs-up fa-2x"></i></small>
@@ -111,7 +126,6 @@
             <div class="vote-progress-bar">
               <div style="width: <%= (Float(suggestion.approvals.count)/suggestion.votes.count) * 100 %>%;"></div>
             </div>
-            <!-- For: <%= suggestion.approvals.count %> -->
           </div>
           <div>
             <small><i class="fa fa-thumbs-down fa-2x"></i></small>

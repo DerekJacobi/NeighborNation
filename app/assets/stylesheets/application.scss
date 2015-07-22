@@ -515,7 +515,7 @@ form {
   position: fixed;
   margin-top: 50px;
   z-index: 998;
-  left: -150px;
+  left: -155px;
   width: 150px;
   height: calc(100vh - 50px);
   transition: all .35s ease-out;
@@ -640,6 +640,6 @@ form {
 @media screen and (min-width: 800px) {
 
     #menu-wrapper.open {
-      left: -150px;
+      left: -155px;
     }
 }

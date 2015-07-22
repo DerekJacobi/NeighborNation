@@ -42,7 +42,7 @@ class SuggestionsController < ApplicationController
   end
 
   def suggestion_params
-    params.require(:suggestion).permit(:title, :content)
+    params.require(:suggestion).permit(:title, :content, :voting)
   end
 
 end
