@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :fetch_all_comments, only: [:show, :update]
+  before_action :fetch_comment, only: [:destroy]
 
   def create
     @forum_post = Forum.find(params[:forum_id])
@@ -7,7 +8,12 @@ class CommentsController < ApplicationController
     @new_comment = @forum_post.comments.create(comment_params)
     @new_comment.user_id = current_user.id
     @new_comment.save
-    redirect_to forum_path(current_user.id)
+
+    if @new_comment.save
+      UserNotifier.send_post_notify_email(@forum_post.author).deliver
+
+      redirect_to forum_path(current_user.id)
+    end
   end
 
   def update

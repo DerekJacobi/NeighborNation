@@ -24,19 +24,19 @@
     <div id="forum-items">
         <ul class="collapsible" data-collapsible="accordion">
           <li>
-            <div id="annoucements">
-              <a id="add-button" class="modal-trigger" href="#announcements-all-modal">Announcements</a>
+            <div id="announcements">
+              <a class="modal-trigger" href="#announcements-all-modal">Announcements(<%= @announcements_count%>)</a>
             </div>
           </li>
           <li>
             <div id="classified-ads">
-              <a id="add-button" class="modal-trigger" href="#classified-all-modal">Classified Ads (<%= @classifieds_count%>)</a>
+              <a class="modal-trigger" href="#classified-all-modal">Classified Ads (<%= @classifieds_count%>)</a>
             </div>
           </li>
 
           <li>
             <div id="requests">
-              <a id="add-button" class="modal-trigger" href="#request-all-modal">Requests (<%= @requests_count%>)</a>
+              <a class="modal-trigger" href="#request-all-modal">Requests (<%= @requests_count%>)</a>
             </div>
           </li>
         </ul>
@@ -118,7 +118,7 @@
     </div>
   </div>
 
-  <!-- Popup modals for annoucements, classifieds and requests -->
+  <!-- Popup modals for announcements, classifieds and requests -->
   <div id="classified-all-modal" class="modal">
     <div class="modal-header">
       <h5>Classified Ads</h5>
@@ -126,7 +126,7 @@
         <a id="add-button" class="modal-trigger" href="#classified-modal">New Post</a>
       </div>
     </div>
-    
+
     <div class="modal-content forum-list-content">
       <div class="list-outer-window">
         <% @all_forum.each do |forum| %>
@@ -135,11 +135,11 @@
 
             <!--~~~~~ if forum post belongs to current user, display edit button ----->
             <% if forum.user_id == current_user.id %>
-            <div id="forum-gear" class="gear-icon">
+            <div class="gear-icon forum-gear">
               <i class="fa fa-cog"></i>
               <ul class="forum-menu">
                 <li class="forum-options">
-                  <a class="modal-trigger" href="#edit-forum-modal">Edit</a>
+                  <a class="modal-trigger" href="#edit-forum-modal-<%= forum.id %>">Edit</a>
                 </li>
                 <li class="forum-options">
                   <%= link_to "Delete", forum_path(id: forum.id), method: "delete" %>
@@ -147,8 +147,8 @@
               </ul>
             </div>
 
-            <!--~~~~~~~~~~~~~~~~~~ Modal 2 Structure ---------------------->
-            <div id="edit-forum-modal" class="modal">
+            <!--~~~~~~~~~~~~~~~~~~ Forum Edit Structure ---------------------->
+            <div id="edit-forum-modal-<%= forum.id %>" class="modal">
               <div class="modal-content">
                 <form class="forum-form" action="<%= forum_path(id: forum.id) %>" method="post">
                   <input type="hidden"
@@ -184,6 +184,43 @@
                 <div class="collapsible-body">
                   <ul>
                     <% forum.comments.each do |comment| %>
+
+                    <!--~~~~~ if forum post belongs to current user, display edit button ----->
+                    <% if comment.user_id == current_user.id %>
+                    <div class="gear-icon forum-gear">
+                      <i class="fa fa-cog"></i>
+                      <ul class="forum-menu">
+                        <li class="forum-options">
+                          <a class="modal-trigger" href="#edit-comment-modal-<%= comment.id %>">Edit</a>
+                        </li>
+                        <li class="forum-options">
+                          <%= link_to "Delete", forum_comment_path(forum_id: forum.id, id: comment.id), method: "delete" %>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <!--~~~~~~~~~~~~~~~~~~ Forum Edit Structure ---------------------->
+                    <div id="edit-comment-modal-<%= comment.id %>" class="modal">
+                      <div class="modal-content">
+                        <form class="forum-form" action="<%= forum_comment_path(forum_id: forum.id, id: comment.id) %>" method="post">
+                          <input type="hidden"
+                                 name="_method"
+                                 value="patch">
+                          <input type="hidden"
+                                 name="authenticity_token"
+                                 value="<%= form_authenticity_token %>">
+                          <label>Content</label>
+                          <textarea id="comment-content"
+                                 type="text"
+                                 name="comment[content]"><%= comment.content %></textarea>
+                          <input type="submit"
+                                 value="Update Post">
+                        </form>
+                      </div>
+                    </div>
+                    <% end %>
+
+                    <!--~~~~~ display comment content ~~~~----->
                     <li><%= comment.content %>
                       <div><small><%= comment.author.firstname %> <%= comment.author.lastname %></small></div>
                     </li>
@@ -225,7 +262,7 @@
         <% @all_forum.each do |forum| %>
           <% if forum.forum_type == "request" %>
           <div class="post-content">
-            <h6><%= forum.topic %></h6>
+            <h6><%= forum.topic %></h6><span><small>By <%= forum.author.firstname %> <%= forum.author.lastname %></small></span>
             <p><%= forum.content %></p>
 
             <!--~~~~~~~ Comments Accordion ~~~~~~~~-->
@@ -278,7 +315,7 @@
         <% @all_forum.each do |forum| %>
           <% if forum.forum_type == "announcement" %>
           <div class="post-content">
-            <h6><%= forum.topic %></h6>
+            <h6><%= forum.topic %></h6><span><small>By <%= forum.author.firstname %> <%= forum.author.lastname %></small></span>
             <p><%= forum.content %></p>
 
             <!--~~~~~~~ Comments Accordion ~~~~~~~~-->
