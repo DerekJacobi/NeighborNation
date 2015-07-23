@@ -16,7 +16,7 @@
                 <a id="edit-button" class="modal-trigger" href="#modal1"><small><i class="fa fa-cog fa-2x"></i></small></a>
               </div>
               <div class="user-photo">
-                <i class="fa fa-user fa-5x"></i>
+                <%= image_tag @user.image.url(:thumb) %>
               </div>
               <h5><%= @user.firstname %> <%= @user.lastname %></h5>
               </br>
@@ -27,6 +27,14 @@
                 <p><%= @user.recommandations %></p>
               </div>
               </br>
+              <div>
+                <%= form_for @current_user do |f| %>
+                    <p>
+                      <%= f.file_field :image %>
+                    </p>
+                    <%= f.submit %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
