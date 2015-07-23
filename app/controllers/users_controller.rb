@@ -34,6 +34,8 @@ class UsersController < ApplicationController
       if @user.update(user_params)
        format.html { redirect_to @user, notice: 'User was successfully updated.' }
        format.json { render :json => @user }
+      #  format.jpg { redirect_to @user, notice: 'User was successfully updated.' }
+      #  format.png { redirect_to @user, notice: 'User was successfully updated.' }
        puts "SUCCESS"
       else
         format.html { redirect_to @user, notice: 'Unable to update user.' }
@@ -61,6 +63,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :firstname, :lastname, :street, :aptnumber, :city, :state, :zip, :aboutme, :recommandations)
+    params.require(:user).permit(:email, :password, :password_confirmation, :firstname, :lastname, :street, :aptnumber, :city, :state, :zip, :aboutme, :recommandations, :image)
   end
 end

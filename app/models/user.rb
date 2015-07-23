@@ -2,20 +2,24 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  firstname       :string
-#  lastname        :string
-#  email           :string
-#  password_digest :string
-#  street          :string
-#  aptnumber       :string
-#  city            :string
-#  state           :string
-#  zip             :integer
-#  aboutme         :string           default("Tell your neighbors a little about yourself.")
-#  recommandations :string           default("Recommend your favorite places to your neighbors.")
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                 :integer          not null, primary key
+#  firstname          :string
+#  lastname           :string
+#  email              :string
+#  password_digest    :string
+#  street             :string
+#  aptnumber          :string
+#  city               :string
+#  state              :string
+#  zip                :integer
+#  aboutme            :string           default("")
+#  recommandations    :string           default("")
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
 #
 
 class User < ActiveRecord::Base
@@ -28,6 +32,15 @@ class User < ActiveRecord::Base
 
   has_many :votes, dependent: :destroy
   has_many :voted_suggestions, through: :votes, source: :suggestion
+
+  has_attached_file :image, styles: {
+    thumb: "100x100>",
+    square: '200x200#',
+    medium: '300x300>'
+   }
+
+  # Validate the attached image is image/jpg, image/png, etc
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   validates :email, presence: true
   validates :password, length: {minimum: 6}, allow_nil: true
