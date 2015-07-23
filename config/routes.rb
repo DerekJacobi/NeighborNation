@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'sessions#new'
 
   resources :suggestions
@@ -8,7 +9,9 @@ Rails.application.routes.draw do
   post 'suggestions/:id/no' => 'votes#vote_no', as: :vote_no
 
   resource :calendar, only: [:index, :show]
-  resources :forums
+  resources :forums do
+    resources :comments
+  end
   resources :users
   resource :session, only: [:new, :create, :destroy]
 

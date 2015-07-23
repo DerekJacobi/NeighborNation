@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require best_in_place
 //= require materialize-sprockets
 //= require_tree .
 $(document).ready(function(){

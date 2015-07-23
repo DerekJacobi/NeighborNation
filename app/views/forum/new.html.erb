@@ -4,6 +4,8 @@
     <div class="forum-content">
       <h5><%= current_user.street%></h5>
     </div>
+
+<!--~~~~~~~~ Search Bar ~~~~~~~~-->
     <div id="forum-search">
       <nav>
         <div class="nav-wrapper">
@@ -18,50 +20,24 @@
       </nav>
     </div>
 
+  <!--~~~~~~~~ Shows list of topics ~~~~~~~~-->
     <div id="forum-items">
-
         <ul class="collapsible" data-collapsible="accordion">
           <li>
             <div id="annoucements">
               <a id="add-button" class="modal-trigger" href="#announcements-all-modal">Announcements</a>
             </div>
-
-            <!-- <div class="collapsible-header collapsible-header-forum">
-              <p class='userlist'>Announcements</p>
-            </div>
-            <div class="collapsible-body">
-              <span>Announcements from your buildings manager</span></br>
-              <a id="add-button" class="modal-trigger" href="#announcements-all-modal">View All</a>
-            </div> -->
           </li>
           <li>
             <div id="classified-ads">
               <a id="add-button" class="modal-trigger" href="#classified-all-modal">Classified Ads (<%= @classifieds_count%>)</a>
             </div>
-            <!-- <div class="collapsible-header collapsible-header-forum">
-              <p class='userlist'>Classified Ads (<%= @classifieds_count%>) </p>
-            </div>
-            <div class="collapsible-body">
-              <span>Classified ads posted by your neighbors</span>
-              </br>
-              <a id="add-button" class="modal-trigger" href="#classified-modal">Create New</a> |
-              <a id="add-button" class="modal-trigger" href="#classified-all-modal">View All</a>
-            </div> -->
           </li>
 
           <li>
             <div id="requests">
               <a id="add-button" class="modal-trigger" href="#request-all-modal">Requests (<%= @requests_count%>)</a>
             </div>
-            <!-- <div class="collapsible-header collapsible-header-forum">
-              <p class='userlist'>Requests (<%= @requests_count%>) </p>
-            </div>
-            <div class="collapsible-body">
-              <span>Requests for goods and services made by the residents of your building</span>
-              </br>
-               <a id="add-button" class="modal-trigger" href="#request-modal">Create New</a> |
-               <a id="add-button" class="modal-trigger" href="#request-all-modal">View All</a>
-            </div> -->
           </li>
         </ul>
     </div>
@@ -79,11 +55,11 @@
         <input type="hidden"
                value="classified"
                name="forum[forum_type]">
-        <label id="ad-title">Ad Topic</label>
+        <label id="ad-title">Ad Title</label>
         <input type="text"
                name="forum[topic]"
                placeholder="Enter topic for Ad">
-        <label>Classified Information</label>
+        <label>Classified Content</label>
         <textarea id="ad-content"
                type="text"
                name="forum[content]"
@@ -103,11 +79,11 @@
         <input type="hidden"
                value="request"
                name="forum[forum_type]">
-        <label id="request-title">Request Topic</label>
+        <label id="request-title">Request Title</label>
         <input type="text"
                name="forum[topic]"
                placeholder="Enter topic for your request">
-        <label>Request Information</label>
+        <label>Request Content</label>
         <textarea id="request-content"
                type="text"
                name="forum[content]"
@@ -118,51 +94,228 @@
     </div>
   </div>
 
+  <div id="announcement-modal" class="modal">
+    <div class="modal-content">
+      <form class="announcement-form" action="<%= forums_path %>" method="post">
+        <input type="hidden"
+               name="authenticity_token"
+               value="<%= form_authenticity_token %>">
+        <input type="hidden"
+               value="announcement"
+               name="forum[forum_type]">
+        <label id="announcement-title">Announcement Title</label>
+        <input type="text"
+               name="forum[topic]"
+               placeholder="Enter topic for your request">
+        <label>Announcement Content</label>
+        <textarea id="announcement-content"
+               type="text"
+               name="forum[content]"
+               placeholder="Enter announcement information"></textarea>
+        <input type="submit"
+               value="Create Announcement!">
+      </form>
+    </div>
+  </div>
+
   <!-- Popup modals for annoucements, classifieds and requests -->
   <div id="classified-all-modal" class="modal">
-    <div class="modal-content">
+    <div class="modal-header">
       <h5>Classified Ads</h5>
-      <div>
-        <a id="add-button" class="modal-trigger" href="#classified-modal">Create New</a>
+      <div class="new-post-button">
+        <a id="add-button" class="modal-trigger" href="#classified-modal">New Post</a>
       </div>
-      <% @all_forum.each do |forum| %>
-        <% if forum.forum_type == "classified" %>
-          <span><%= forum.topic %></span> |
-          <span><%= forum.content %></span> |
-          <a href="#" >Comment</a>
-        </br>
+    </div>
+    
+    <div class="modal-content forum-list-content">
+      <div class="list-outer-window">
+        <% @all_forum.each do |forum| %>
+          <% if forum.forum_type == "classified" %>
+          <div class="post-content">
+
+            <!--~~~~~ if forum post belongs to current user, display edit button ----->
+            <% if forum.user_id == current_user.id %>
+            <div id="forum-gear" class="gear-icon">
+              <i class="fa fa-cog"></i>
+              <ul class="forum-menu">
+                <li class="forum-options">
+                  <a class="modal-trigger" href="#edit-forum-modal">Edit</a>
+                </li>
+                <li class="forum-options">
+                  <%= link_to "Delete", forum_path(id: forum.id), method: "delete" %>
+                </li>
+              </ul>
+            </div>
+
+            <!--~~~~~~~~~~~~~~~~~~ Modal 2 Structure ---------------------->
+            <div id="edit-forum-modal" class="modal">
+              <div class="modal-content">
+                <form class="forum-form" action="<%= forum_path(id: forum.id) %>" method="post">
+                  <input type="hidden"
+                         name="_method"
+                         value="patch">
+                  <input type="hidden"
+                         name="authenticity_token"
+                         value="<%= form_authenticity_token %>">
+                  <label id="forum-title">Title</label>
+                  <input type="text"
+                         name="forum[topic]"
+                         value="<%= forum.topic %>">
+                  <label>Content</label>
+                  <textarea id="forum-content"
+                         type="text"
+                         name="forum[content]"><%= forum.content %></textarea>
+                  <input type="submit"
+                         value="Update Post">
+                </form>
+              </div>
+            </div>
+            <% end %>
+
+            <h6><%= forum.topic %></h6><span><small>By <%= forum.author.firstname %> <%= forum.author.lastname %></small></span>
+            <p><%= forum.content %></p>
+
+            <!--~~~~~~~ Comments Accordion ~~~~~~~~-->
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header collapsible-header-forum">
+                  <p class='userlist'>View Comments</p>
+                </div>
+                <div class="collapsible-body">
+                  <ul>
+                    <% forum.comments.each do |comment| %>
+                    <li><%= comment.content %>
+                      <div><small><%= comment.author.firstname %> <%= comment.author.lastname %></small></div>
+                    </li>
+                    <% end %>
+                    <li>
+                      <div class="comment-form">
+                        <%= form_for([forum, forum.comments.build]) do |f| %>
+                        <div class="content-field">
+                          <%= f.label :comment %> </br>
+                          <%= f.text_area :content %>
+                        </div>
+                        <div class="actions">
+                          <%= f.submit %>
+                        </div>
+                        <% end %>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 
   <div id="request-all-modal" class="modal">
-    <div class="modal-content">
+    <div class="modal-header">
       <h5>Requests</h5>
-      <div>
-        <a id="add-button" class="modal-trigger" href="#request-modal">Create New</a>
+      <div class="new-post-button">
+        <a id="add-button" class="modal-trigger" href="#request-modal">New Post</a>
       </div>
-      <% @all_forum.each do |forum| %>
-        <% if forum.forum_type == "request" %>
-          <span><%= forum.topic %></span> |
-          <span><%= forum.content %></span> |
-          <a href="#" >Comment</a>
-        </br>
+    </div>
+    <div class="modal-content forum-list-content">
+      <div class="list-outer-window">
+        <% @all_forum.each do |forum| %>
+          <% if forum.forum_type == "request" %>
+          <div class="post-content">
+            <h6><%= forum.topic %></h6>
+            <p><%= forum.content %></p>
+
+            <!--~~~~~~~ Comments Accordion ~~~~~~~~-->
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header collapsible-header-forum">
+                  <p class='userlist'>View Comments</p>
+                </div>
+                <div class="collapsible-body">
+                  <ul>
+                    <% forum.comments.each do |comment| %>
+                    <li><%= comment.content %>
+                      <div><small><%= comment.author.firstname %> <%= comment.author.lastname %></small></div>
+                    </li>
+                    <% end %>
+                    <li>
+                      <div class="comment-form">
+                        <%= form_for([forum, forum.comments.build]) do |f| %>
+                        <div class="content-field">
+                          <%= f.label :comment %> </br>
+                          <%= f.text_area :content %>
+                        </div>
+                        <div class="actions">
+                          <%= f.submit %>
+                        </div>
+                        <% end %>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 
   <div id="announcements-all-modal" class="modal">
-    <div class="modal-content">
-      </br>
-      <% @all_forum.each do |forum| %>
-        <% if forum.forum_type == nil %>
-          <span><%= forum.topic %></span> |
-          <span><%= forum.content %></span> |
-        </br>
+    <div class="modal-header">
+      <h5>Announcements</h5>
+      <div class="new-post-button">
+        <a id="add-button" class="modal-trigger" href="#announcement-modal">New Post</a>
+      </div>
+    </div>
+    <div class="modal-content forum-list-content">
+      <div class="list-outer-window">
+        <% @all_forum.each do |forum| %>
+          <% if forum.forum_type == "announcement" %>
+          <div class="post-content">
+            <h6><%= forum.topic %></h6>
+            <p><%= forum.content %></p>
+
+            <!--~~~~~~~ Comments Accordion ~~~~~~~~-->
+            <ul class="collapsible" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header collapsible-header-forum">
+                  <p class='userlist'>View Comments</p>
+                </div>
+                <div class="collapsible-body">
+                  <ul>
+                    <% forum.comments.each do |comment| %>
+                    <li><%= comment.content %>
+                      <div><small><%= comment.author.firstname %> <%= comment.author.lastname %></small></div>
+                    </li>
+                    <% end %>
+                    <li>
+                      <div class="comment-form">
+                        <%= form_for([forum, forum.comments.build]) do |f| %>
+                        <div class="content-field">
+                          <%= f.label :comment %> </br>
+                          <%= f.text_area :content %>
+                        </div>
+                        <div class="actions">
+                          <%= f.submit %>
+                        </div>
+                        <% end %>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 
