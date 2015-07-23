@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "2.2.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
@@ -28,33 +28,25 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# gem 'best_in_place', '~> 3.0.1'
-
 gem 'responders', '~> 2.0'
 
 # gem 'materialize-sass'
 
 gem 'sendgrid'
 
-ruby '2.2.2'
 # Use Unicorn as the app server
 # gem 'unicorn'
 #
 # gem 'pry'
 
-gem 'materialize-sass'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'rails_12factor', group: :production
-
-ruby "2.2.2"
-
 gem 'yelp', require: 'yelp'
-gem 'aws-sdk'	# amazon web services gem
+gem 'aws-sdk', '< 2.0'
 gem 'paperclip' 		# paperclip gem for file management
 gem 'dotenv-rails', :groups => [:development, :test]	# env variable to keep sensitive data hidden
-
+gem 'materialize-sass'
 
 group :development, :test do
   gem 'annotate'
