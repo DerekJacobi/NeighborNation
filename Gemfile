@@ -32,7 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'responders', '~> 2.0'
 
-gem 'materialize-sass'
+# gem 'materialize-sass'
 
 gem 'sendgrid'
 
