@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   has_many :suggestions, dependent: :destroy
 
   has_many :forums, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   has_many :votes, dependent: :destroy
   has_many :voted_suggestions, through: :votes, source: :suggestion

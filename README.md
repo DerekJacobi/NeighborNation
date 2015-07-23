@@ -5,7 +5,6 @@ Ruby on Rails,
 Ruby,
 Javascript,
 jQuery,
-HTML,
 Heroku
 ##### Ruby Gems
 Yelp,
@@ -16,7 +15,8 @@ bcrypt
 #####API's
 Google Maps, 
 Amazon Web Services,
-Yelp
+Yelp,
+Smarty Streets
 #####Styling
-SASS/CSS,
+SASS/HTML/CSS,
 Materialize CSS
