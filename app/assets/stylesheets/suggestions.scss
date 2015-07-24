@@ -323,7 +323,7 @@ input[type=text]:focus:not([readonly])+label {
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 400px) {
   .suggestion-window {
 
     > ul {
