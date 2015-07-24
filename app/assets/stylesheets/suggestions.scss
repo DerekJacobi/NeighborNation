@@ -311,6 +311,30 @@ input[type=text]:focus:not([readonly])+label {
   color: darkgray !important;
 }
 
+@media screen and (max-width: 640px) {
+  .suggestion-window {
+
+    > ul {
+
+      > li {
+        width: calc(98% / 2) !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .suggestion-window {
+
+    > ul {
+
+      > li {
+        width: 100% !important;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 920px) {
   .suggestion-window ul li {
     width: calc(97% / 3);
