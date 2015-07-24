@@ -168,12 +168,15 @@
      width: 100px;
      height: 100px;
      border-radius: 100px;
-     background-color: #f58a89;
      margin: 0 auto;
      overflow: hidden;
 
      i {
+       padding-top: 20px;
        color: white;
+       background-color: #f58a89;
+       width: 100px;
+       height: 120px;
      }
    }
 
