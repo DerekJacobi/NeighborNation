@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @new_comment.user_id = current_user.id
 
     if @new_comment.save
-      UserNotifier.send_post_notify_email(@forum_post.author).deliver_now
+      UserNotifier.send_post_notify_email(@forum_post.author, current_user).deliver_now
       redirect_to forum_path(current_user.id)
     end
   end

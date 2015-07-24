@@ -5,6 +5,11 @@
   </head>
   <body>
     <h3>Hey, <%= @user.firstname %>!</h3>
-    <p>Someone has comment on your post!</p>
+    <p><%= @commenter.firstname %> <%= @commenter.lastname %> has commented on your post!</p>
+    <p>
+      Check it out on <a href="www.neighbornation.co">Neighbor Nation!</a></p>
+    <p>Stay classy!</p>
+    <hr>
+    <h4>Neighbor Nation Team</4>
   </body>
 </html>
