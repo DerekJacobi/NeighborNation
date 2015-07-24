@@ -275,6 +275,43 @@
                 <div class="collapsible-body">
                   <ul>
                     <% forum.comments.each do |comment| %>
+
+                    <!--~~~~~ if forum post belongs to current user, display edit button ----->
+                    <% if comment.user_id == current_user.id %>
+                    <div class="gear-icon forum-gear">
+                      <i class="fa fa-cog"></i>
+                      <ul class="forum-menu">
+                        <li class="forum-options">
+                          <a class="modal-trigger" href="#edit-comment-modal-<%= comment.id %>">Edit</a>
+                        </li>
+                        <li class="forum-options">
+                          <%= link_to "Delete", forum_comment_path(forum_id: forum.id, id: comment.id), method: "delete" %>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <!--~~~~~~~~~~~~~~~~~~ Forum Edit Structure ---------------------->
+                    <div id="edit-comment-modal-<%= comment.id %>" class="modal">
+                      <div class="modal-content">
+                        <form class="forum-form" action="<%= forum_comment_path(forum_id: forum.id, id: comment.id) %>" method="post">
+                          <input type="hidden"
+                                 name="_method"
+                                 value="patch">
+                          <input type="hidden"
+                                 name="authenticity_token"
+                                 value="<%= form_authenticity_token %>">
+                          <label>Content</label>
+                          <textarea id="comment-content"
+                                 type="text"
+                                 name="comment[content]"><%= comment.content %></textarea>
+                          <input type="submit"
+                                 value="Update Post">
+                        </form>
+                      </div>
+                    </div>
+                    <% end %>
+
+                    <!--~~~~~ display comment content ~~~~----->
                     <li><%= comment.content %>
                       <div><small><%= comment.author.firstname %> <%= comment.author.lastname %></small></div>
                     </li>
@@ -328,6 +365,43 @@
                 <div class="collapsible-body">
                   <ul>
                     <% forum.comments.each do |comment| %>
+
+                    <!--~~~~~ if forum post belongs to current user, display edit button ----->
+                    <% if comment.user_id == current_user.id %>
+                    <div class="gear-icon forum-gear">
+                      <i class="fa fa-cog"></i>
+                      <ul class="forum-menu">
+                        <li class="forum-options">
+                          <a class="modal-trigger" href="#edit-comment-modal-<%= comment.id %>">Edit</a>
+                        </li>
+                        <li class="forum-options">
+                          <%= link_to "Delete", forum_comment_path(forum_id: forum.id, id: comment.id), method: "delete" %>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <!--~~~~~~~~~~~~~~~~~~ Forum Edit Structure ---------------------->
+                    <div id="edit-comment-modal-<%= comment.id %>" class="modal">
+                      <div class="modal-content">
+                        <form class="forum-form" action="<%= forum_comment_path(forum_id: forum.id, id: comment.id) %>" method="post">
+                          <input type="hidden"
+                                 name="_method"
+                                 value="patch">
+                          <input type="hidden"
+                                 name="authenticity_token"
+                                 value="<%= form_authenticity_token %>">
+                          <label>Content</label>
+                          <textarea id="comment-content"
+                                 type="text"
+                                 name="comment[content]"><%= comment.content %></textarea>
+                          <input type="submit"
+                                 value="Update Post">
+                        </form>
+                      </div>
+                    </div>
+                    <% end %>
+
+                    <!--~~~~~ display comment content ~~~~----->
                     <li><%= comment.content %>
                       <div><small><%= comment.author.firstname %> <%= comment.author.lastname %></small></div>
                     </li>
