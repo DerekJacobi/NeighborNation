@@ -622,7 +622,7 @@ form {
      margin: 0 auto;
    }
 
-   header {
+   .logo-container {
      padding-top: 50px;
    }
 
@@ -635,6 +635,18 @@ form {
   #main-page, header {
     width: 100%;
   }
+
+  .login-container {
+    width: 350px;
+  }
+
+  .app-window {
+    display: inline-block;
+    height: 500px;
+    width: 380px;
+    min-width: 0;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (min-width: 800px) {
@@ -642,4 +654,10 @@ form {
     #menu-wrapper.open {
       left: -155px;
     }
+}
+
+@media screen and (max-height: 640px ) {
+  .footer-container-absolute {
+    position: static;
+  }
 }

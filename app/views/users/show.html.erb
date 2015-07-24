@@ -16,24 +16,18 @@
                 <a id="edit-button" class="modal-trigger" href="#modal1">Edit</a>
               </div>
               <div class="user-photo">
+                <% if current_user.image.url(:thumb) == '/images/thumb/missing.png' %>
+                <i class="fa fa-user fa-5x"></i>
+                <% else %>
                 <%= image_tag current_user.image.url(:thumb) %>
+                <% end %>
               </div>
               <h5><%= @user.firstname %> <%= @user.lastname %></h5>
               </br>
               <div class="user-info">
-                <!-- <h6>Bio:</h6> -->
                 <p><%= @user.aboutme %></p>
                 <h6>My Local Recommendations: </h6>
                 <p><%= @user.recommandations %></p>
-              </div>
-              </br>
-              <div>
-                <%= form_for @current_user do |f| %>
-                    <p>
-                      <%= f.file_field :image %>
-                    </p>
-                    <%= f.submit %>
-                <% end %>
               </div>
             </div>
           </div>
@@ -102,6 +96,15 @@
           <input type="submit"
                  value="Update">
         </form>
+        <div class="upload-photo">
+          <label>Upload Profile Photo</label>
+          <%= form_for @current_user do |f| %>
+              <p>
+                <%= f.file_field :image %>
+              </p>
+              <%= f.submit %>
+          <% end %>
+        </div>
         <div id="delete-section">
           <a id="delete-button" class="modal-trigger" href="#modal2">Delete Account</a>
         </div>

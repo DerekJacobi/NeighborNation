@@ -17,6 +17,23 @@
 
 $(document).ready(function(){
     $('.modal-trigger').leanModal();
+
+    //************ Nav burger trigger ************//
+    $("#nav-burger").on('click', function(){
+      animateHamburger();
+      slideMenu();
+    });
+
+    //************ Auto Scroll ************//
+    var $root = $('html, body');
+
+    $('#scroll-button').click(function() {
+        $root.animate({
+            scrollTop: $("#scroll-button").offset().top
+        }, 250);
+        return false;
+    });
+
 });
 
 //************ Nav burger and menu ************//
@@ -30,20 +47,6 @@ function slideMenu() {
   console.log('slide menu ended');
 };
 
-$("#nav-burger").on('click', function(){
-  animateHamburger();
-  slideMenu();
-});
-
-//************ Auto Scroll ************//
-var $root = $('html, body');
-
-$('#scroll-button').click(function() {
-    $root.animate({
-        scrollTop: $("#scroll-button").offset().top
-    }, 250);
-    return false;
-});
 
 //************ Edit Suggestions menu ************//
 // function suggestionMenu() {
