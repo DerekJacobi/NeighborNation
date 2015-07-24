@@ -16,6 +16,9 @@
     <input class="app-border"
            type="email"
            name="user[email]"
+           <% if flash[:email] %>
+               value="<%= flash[:email] %>"
+           <% end %>
            placeholder="email">
     <input class="app-border"
            type="password"
@@ -28,18 +31,30 @@
     <input class="app-border"
            type="text"
            name="user[firstname]"
+           <% if flash[:firstname] %>
+               value="<%= flash[:firstname] %>"
+           <% end %>
            placeholder="first name">
     <input class="app-border"
            type="text"
            name="user[lastname]"
+           <% if flash[:lastname] %>
+               value="<%= flash[:lastname] %>"
+           <% end %>
            placeholder="last name">
     <div class="street">
       <input id="street-address"
              class="app-border streetbig" type="text"
              name="user[street]"
+             <% if flash[:street] %>
+                 value="<%= flash[:street] %>"
+             <% end %>
              placeholder="street name">
       <input class="app-border streetsmall" type="text"
              name="user[aptnumber]"
+             <% if flash[:aptnumber] %>
+                 value="<%= flash[:aptnumber] %>"
+             <% end %>
              placeholder="apartment #">
     </div>
 
@@ -48,16 +63,25 @@
              class="app-border"
              type="text"
              name="user[city]"
+             <% if flash[:city] %>
+                 value="<%= flash[:city] %>"
+             <% end %>
              placeholder="city">
       <input id="state"
              class="app-border"
              type="text"
              name="user[state]"
+             <% if flash[:state] %>
+                 value="<%= flash[:state] %>"
+             <% end %>
              placeholder="state">
       <input id="zip"
              class="app-border"
              type="text"
              name="user[zip]"
+             <% if flash[:zip] %>
+                 value="<%= flash[:zip] %>"
+             <% end %>
              placeholder="zip">
     </div>
     <input type="submit" value="Sign Up">

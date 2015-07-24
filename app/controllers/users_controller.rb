@@ -31,8 +31,17 @@ class UsersController < ApplicationController
       login!(@user)
       redirect_to @user
     else
-      # Try using materialize 'dialogs' for errors?
+      # Save all entered fields in form to prevent duplicate insertion for users
       flash[:message] = @user.errors.full_messages.to_sentence
+      flash[:firstname] = @user.firstname
+      flash[:lastname] = @user.lastname
+      flash[:email] = @user.email
+      flash[:street] = @user.street
+      flash[:aptnumber] = @user.aptnumber
+      flash[:city] = @user.city
+      flash[:state] = @user.state
+      flash[:zip] = @user.zip
+      redirect_to new_user_path
     end
   end
 
