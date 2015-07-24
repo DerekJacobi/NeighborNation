@@ -1,9 +1,12 @@
 <div class="app-window">
 
   <div class="suggestion-window">
+    <div class="open-voting">
+      <h5>Open Voting</h5>
+    </div>
 
     <ul>
-      <li>
+      <li id="add-button-container">
         <a id="add-button" class="modal-trigger" href="#modal1"><i class="fa fa-plus fa-3x"></i></a>
 
         <!--~~~~~~~~~~~~~~~~~~ Modal 1 Structure ---------------------->
@@ -30,6 +33,7 @@
         <!--~~~~~~~~~~~~~~~~ Modal 1 Structure End ~~~~~~~~~~~~~~~~~~-->
       </li>
       <% @all_suggestions.each do |suggestion| %>
+      <% if suggestion.voting %>
       <li>
         <!--~~~~~ if suggestion belongs to current user, display edit button ----->
         <% if suggestion.user_id == @current_user.id %>
@@ -91,7 +95,7 @@
           <%= suggestion.content %>
         </p>
 
-        <div id="vote-section">
+        <div class="vote-section">
         <!--~~~~~~~~~~~~ if user has not voted, display voting options --------------->
         <% if suggestion.voters.where(id: @current_user.id).count == 0 && suggestion.voting == true %>
           <div id="vote-yes">
@@ -134,6 +138,38 @@
         <% end %>
         <!----------------------------------------------------------------------------->
       </li>
+      <% end %>
+      <% end %>
+    </ul>
+
+    <div class="closed-voting">
+      <h5>Closed Voting</h5>
+    </div>
+
+    <ul>
+      <% @all_suggestions.each do |suggestion| %>
+      <% if !suggestion.voting %>
+      <li>
+        <h5><%= suggestion.title %></h5>
+        <p>
+          <%= suggestion.content %>
+        </p>
+
+        <div class="vote-section">
+          <div>
+            <small><i style="color: #FFE066" class="fa fa-thumbs-up fa-2x"></i></small>
+          </div>
+          <div id="vote-results">
+            <div class="vote-progress-bar">
+              <div style="width: <%= (Float(suggestion.approvals.count)/suggestion.votes.count) * 100 %>%;"></div>
+            </div>
+          </div>
+          <div>
+            <small><i class="fa fa-thumbs-down fa-2x"></i></small>
+          </div>
+        </div>
+      </li>
+      <% end %>
       <% end %>
     </ul>
   </div>
