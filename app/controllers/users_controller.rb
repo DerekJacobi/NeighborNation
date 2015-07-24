@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   end
 
 
-
   def index
     fetch_all_users
   end
@@ -34,7 +33,6 @@ class UsersController < ApplicationController
     else
       # Try using materialize 'dialogs' for errors?
       flash[:message] = @user.errors.full_messages.to_sentence
-      redirect_to new_user_path
     end
   end
 
@@ -43,8 +41,6 @@ class UsersController < ApplicationController
       if @user.update(user_params)
        format.html { redirect_to @user, notice: 'User was successfully updated.' }
        format.json { render :json => @user }
-      #  format.jpg { redirect_to @user, notice: 'User was successfully updated.' }
-      #  format.png { redirect_to @user, notice: 'User was successfully updated.' }
        puts "SUCCESS"
       else
         format.html { redirect_to @user, notice: 'Unable to update user.' }
