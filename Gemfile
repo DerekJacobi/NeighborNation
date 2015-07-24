@@ -45,7 +45,7 @@ gem 'rails_12factor', group: :production
 gem 'yelp', require: 'yelp'
 gem 'aws-sdk', '< 2.0'
 gem 'paperclip' 		# paperclip gem for file management
-gem 'dotenv-rails', :groups => [:development, :test]	# env variable to keep sensitive data hidden
+gem 'dotenv-rails', :groups => [:development, :production, :test]	# env variable to keep sensitive data hidden
 gem 'materialize-sass'
 
 group :development, :test do
