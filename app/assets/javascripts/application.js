@@ -12,12 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require best_in_place
 //= require materialize-sprockets
 //= require_tree .
-
 $(document).ready(function(){
     $('.modal-trigger').leanModal();
-
+    $(".best_in_place").best_in_place();
     //************ Nav burger trigger ************//
     $("#nav-burger").on('click', function(){
       animateHamburger();

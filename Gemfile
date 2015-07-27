@@ -30,7 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'responders', '~> 2.0'
 
-# gem 'materialize-sass'
+gem 'best_in_place', '~> 3.0.3'
 
 gem 'sendgrid'
 

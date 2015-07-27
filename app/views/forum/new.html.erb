@@ -136,46 +136,18 @@
             <!--~~~~~ if forum post belongs to current user, display edit button ----->
             <% if forum.user_id == current_user.id %>
             <div class="gear-icon forum-gear">
-              <i class="fa fa-cog"></i>
-              <ul class="forum-menu">
-                <li class="forum-options">
-                  <a class="modal-trigger" href="#edit-forum-modal-<%= forum.id %>">Edit</a>
-                </li>
-                <li class="forum-options">
-                  <%= link_to "Delete", forum_path(id: forum.id), method: "delete" %>
-                </li>
-              </ul>
+              <%= link_to "Delete", forum_path(id: forum.id), method: "delete" %>
             </div>
-
-
-            <!--~~~~~~~~~~~~~~~~~~ Forum Edit Structure ---------------------->
-            <div id="edit-forum-modal-<%= forum.id %>" class="modal">
-              <div class="modal-content">
-                <form class="forum-form" action="<%= forum_path(id: forum.id) %>" method="post">
-                  <input type="hidden"
-                         name="_method"
-                         value="patch">
-                  <input type="hidden"
-                         name="authenticity_token"
-                         value="<%= form_authenticity_token %>">
-                  <label id="forum-title">Title</label>
-                  <input type="text"
-                         name="forum[topic]"
-                         value="<%= forum.topic %>">
-                  <label>Content</label>
-                  <textarea id="forum-content"
-                         type="text"
-                         name="forum[content]"><%= forum.content %></textarea>
-                  <input type="submit"
-                         value="Update Post">
-                </form>
-              </div>
-            </div>
+            <h6><%= best_in_place forum, :topic %></h6>
             <% end %>
-
-            <h6><%= forum.topic %></h6><span><small>By <%= forum.author.firstname %> <%= forum.author.lastname %></small></span>
-            <p><%= forum.content %></p>
-
+            <span><small>By <%= forum.author.firstname %> <%= forum.author.lastname %></small></span>
+            <% if forum.user_id == current_user.id %>
+            <p class="edit-space"><%= best_in_place forum, :content %></p>
+            <% else %>
+            <p>
+              <%= forum.content %>
+            </p>
+            <% end %>
             <!--~~~~~~~ Comments Accordion ~~~~~~~~-->
             <ul class="collapsible" data-collapsible="accordion">
               <li>
@@ -189,35 +161,7 @@
                     <!--~~~~~ if forum post belongs to current user, display edit button ----->
                     <% if comment.user_id == current_user.id %>
                     <div class="gear-icon forum-gear">
-                      <i class="fa fa-cog"></i>
-                      <ul class="forum-menu">
-                        <li class="forum-options">
-                          <a class="modal-trigger" href="#edit-comment-modal-<%= comment.id %>">Edit</a>
-                        </li>
-                        <li class="forum-options">
-                          <%= link_to "Delete", forum_comment_path(forum_id: forum.id, id: comment.id), method: "delete" %>
-                        </li>
-                      </ul>
-                    </div>
-
-                    <!--~~~~~~~~~~~~~~~~~~ Forum Edit Structure ---------------------->
-                    <div id="edit-comment-modal-<%= comment.id %>" class="modal">
-                      <div class="modal-content">
-                        <form class="forum-form" action="<%= forum_comment_path(forum_id: forum.id, id: comment.id) %>" method="post">
-                          <input type="hidden"
-                                 name="_method"
-                                 value="patch">
-                          <input type="hidden"
-                                 name="authenticity_token"
-                                 value="<%= form_authenticity_token %>">
-                          <label>Content</label>
-                          <textarea id="comment-content"
-                                 type="text"
-                                 name="comment[content]"><%= comment.content %></textarea>
-                          <input type="submit"
-                                 value="Update Post">
-                        </form>
-                      </div>
+                      <%= link_to "Delete", forum_comment_path(forum_id: forum.id, id: comment.id), method: "delete" %>
                     </div>
                     <% end %>
 
@@ -263,9 +207,22 @@
         <% @all_forum.each do |forum| %>
           <% if forum.forum_type == "request" %>
           <div class="post-content">
-            <h6><%= forum.topic %></h6><span><small>By <%= forum.author.firstname %> <%= forum.author.lastname %></small></span>
-            <p><%= forum.content %></p>
 
+            <!--~~~~~ if forum post belongs to current user, display edit button ----->
+            <% if forum.user_id == current_user.id %>
+            <div class="gear-icon forum-gear">
+              <%= link_to "Delete", forum_path(id: forum.id), method: "delete" %>
+            </div>
+            <h6><%= best_in_place forum, :topic %></h6>
+            <% end %>
+            <span><small>By <%= forum.author.firstname %> <%= forum.author.lastname %></small></span>
+            <% if forum.user_id == current_user.id %>
+            <p class="edit-space"><%= best_in_place forum, :content %></p>
+            <% else %>
+            <p>
+              <%= forum.content %>
+            </p>
+            <% end %>
             <!--~~~~~~~ Comments Accordion ~~~~~~~~-->
             <ul class="collapsible" data-collapsible="accordion">
               <li>
@@ -279,35 +236,7 @@
                     <!--~~~~~ if forum post belongs to current user, display edit button ----->
                     <% if comment.user_id == current_user.id %>
                     <div class="gear-icon forum-gear">
-                      <i class="fa fa-cog"></i>
-                      <ul class="forum-menu">
-                        <li class="forum-options">
-                          <a class="modal-trigger" href="#edit-comment-modal-<%= comment.id %>">Edit</a>
-                        </li>
-                        <li class="forum-options">
-                          <%= link_to "Delete", forum_comment_path(forum_id: forum.id, id: comment.id), method: "delete" %>
-                        </li>
-                      </ul>
-                    </div>
-
-                    <!--~~~~~~~~~~~~~~~~~~ Forum Edit Structure ---------------------->
-                    <div id="edit-comment-modal-<%= comment.id %>" class="modal">
-                      <div class="modal-content">
-                        <form class="forum-form" action="<%= forum_comment_path(forum_id: forum.id, id: comment.id) %>" method="post">
-                          <input type="hidden"
-                                 name="_method"
-                                 value="patch">
-                          <input type="hidden"
-                                 name="authenticity_token"
-                                 value="<%= form_authenticity_token %>">
-                          <label>Content</label>
-                          <textarea id="comment-content"
-                                 type="text"
-                                 name="comment[content]"><%= comment.content %></textarea>
-                          <input type="submit"
-                                 value="Update Post">
-                        </form>
-                      </div>
+                      <%= link_to "Delete", forum_comment_path(forum_id: forum.id, id: comment.id), method: "delete" %>
                     </div>
                     <% end %>
 
@@ -353,8 +282,23 @@
         <% @all_forum.each do |forum| %>
           <% if forum.forum_type == "announcement" %>
           <div class="post-content">
-            <h6><%= forum.topic %></h6><span><small>By <%= forum.author.firstname %> <%= forum.author.lastname %></small></span>
-            <p><%= forum.content %></p>
+
+
+            <!--~~~~~ if forum post belongs to current user, display edit button ----->
+            <% if forum.user_id == current_user.id %>
+            <div class="gear-icon forum-gear">
+              <%= link_to "Delete", forum_path(id: forum.id), method: "delete" %>
+            </div>
+            <h6><%= best_in_place forum, :topic %></h6>
+            <% end %>
+            <span><small>By <%= forum.author.firstname %> <%= forum.author.lastname %></small></span>
+            <% if forum.user_id == current_user.id %>
+            <p class="edit-space"><%= best_in_place forum, :content %></p>
+            <% else %>
+            <p>
+              <%= forum.content %>
+            </p>
+            <% end %>
 
             <!--~~~~~~~ Comments Accordion ~~~~~~~~-->
             <ul class="collapsible" data-collapsible="accordion">
@@ -366,45 +310,21 @@
                   <ul>
                     <% forum.comments.each do |comment| %>
 
-                    <!--~~~~~ if forum post belongs to current user, display edit button ----->
-                    <% if comment.user_id == current_user.id %>
-                    <div class="gear-icon forum-gear">
-                      <i class="fa fa-cog"></i>
-                      <ul class="forum-menu">
-                        <li class="forum-options">
-                          <a class="modal-trigger" href="#edit-comment-modal-<%= comment.id %>">Edit</a>
-                        </li>
-                        <li class="forum-options">
-                          <%= link_to "Delete", forum_comment_path(forum_id: forum.id, id: comment.id), method: "delete" %>
-                        </li>
-                      </ul>
-                    </div>
-
-                    <!--~~~~~~~~~~~~~~~~~~ Forum Edit Structure ---------------------->
-                    <div id="edit-comment-modal-<%= comment.id %>" class="modal">
-                      <div class="modal-content">
-                        <form class="forum-form" action="<%= forum_comment_path(forum_id: forum.id, id: comment.id) %>" method="post">
-                          <input type="hidden"
-                                 name="_method"
-                                 value="patch">
-                          <input type="hidden"
-                                 name="authenticity_token"
-                                 value="<%= form_authenticity_token %>">
-                          <label>Content</label>
-                          <textarea id="comment-content"
-                                 type="text"
-                                 name="comment[content]"><%= comment.content %></textarea>
-                          <input type="submit"
-                                 value="Update Post">
-                        </form>
+                    <!--~~~~~ if comment post belongs to current user, display delete and best in place edit ----->
+                      <% if comment.user_id == current_user.id %>
+                      <div class="gear-icon forum-gear">
+                            <%= link_to "Delete", forum_comment_path(forum_id: forum.id, id: comment.id), method: "delete" %>
                       </div>
-                    </div>
-                    <% end %>
-
-                    <!--~~~~~ display comment content ~~~~----->
-                    <li><%= comment.content %>
-                      <div><small><%= comment.author.firstname %> <%= comment.author.lastname %></small></div>
-                    </li>
+                      <% end %>
+                                <!--~~~~~ display comment content ~~~~----->
+                      <li>
+                        <% if comment.user_id == current_user.id %>
+                          <%= best_in_place forum.comments(comment.id), :content %>
+                        <% else %>
+                          <%= comment.content %>
+                        <% end %>
+                        <div><small><%= comment.author.firstname %> <%= comment.author.lastname %></small></div>
+                      </li>
                     <% end %>
                     <li>
                       <div class="comment-form">

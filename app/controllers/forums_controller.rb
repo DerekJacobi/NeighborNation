@@ -3,7 +3,7 @@ class ForumsController < ApplicationController
   before_action :fetch_all_classifieds, only: [:index, :show, :update]
   before_action :fetch_all_requests, only: [:index, :show, :update]
   before_action :fetch_all_announcements, only: [:index, :show, :update]
-  before_action :fetch_forum, only: [:destroy]
+  before_action :fetch_forum, only: [:destroy, :update]
 
   def show
     render 'forum/new'
@@ -21,8 +21,15 @@ class ForumsController < ApplicationController
   end
 
   def update
-    @forum.update(forum_params)
-    redirect_to forum_path(current_user.id)
+
+    respond_to do |format|
+      if @forum.update(forum_params)
+       format.html { redirect_to forum_path(current_user.id), notice: 'Forum post was successfully updated.' }
+       format.json { render :json => @forum }
+      else
+        format.html { redirect_to forum_path(current_user.id), notice: "Unable to update forum post." }
+      end
+    end
   end
 
   def destroy

@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :fetch_all_comments, only: [:show, :update]
-  before_action :fetch_comment, only: [:destroy]
+  before_action :fetch_all_comments, only: [:show, :update, :content]
+  before_action :fetch_comment, only: [:destroy, :update, :show, :content]
+
+  def show
+
+  end
 
   def create
     @forum_post = Forum.find(params[:forum_id])

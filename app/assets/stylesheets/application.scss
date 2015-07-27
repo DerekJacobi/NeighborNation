@@ -599,6 +599,20 @@ form {
   height: 75px;
   background-color: #ff9466;
   margin-top: 50px;
+  display: flex;
+  justify-content: right;
+
+  div.contact-container, div.about-container  {
+    height: 100%;
+    width: 50px;
+    line-height: 4em;
+    float: right;
+    margin-left: 3em;
+
+    a {
+      color: white;
+    }
+  }
 }
 
 .footer-container-absolute {
